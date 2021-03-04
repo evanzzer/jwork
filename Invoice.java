@@ -49,7 +49,7 @@ public class Invoice
         // Set Date
     }
     
-    public void setTotalFee(String totalFee)
+    public void setTotalFee(int totalFee)
     {
         // Set Total Fee
     }
