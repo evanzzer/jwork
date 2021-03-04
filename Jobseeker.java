@@ -1,6 +1,6 @@
 
 /**
- * Jobseeker
+ * Jobseeker Class
  */
 public class Jobseeker
 {
