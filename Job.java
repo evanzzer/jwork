@@ -1,6 +1,9 @@
 /**
  * Informations about a job.
  * Contains ID, Name, Recruiter, Fee, and category of a job.
+ * 
+ * @author Evans Hebert
+ * @version 18 March 2021
  */
 public class Job
 {

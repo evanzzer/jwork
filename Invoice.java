@@ -1,6 +1,9 @@
 /**
  * Details about invoices.
  * Contains ID, Job ID, Date, Total Fee, and the Jobseeker.
+ * 
+ * @author Evans Hebert
+ * @version 18 March 2021
  */
 public class Invoice
 {

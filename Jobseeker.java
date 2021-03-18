@@ -1,6 +1,9 @@
 /**
  * Informations about a jobseeker.
  * Contains ID, name, email, password, and join date of a jobseeker
+ * 
+ * @author Evans Hebert
+ * @version 18 March 2021
  */
 public class Jobseeker
 {

@@ -1,5 +1,8 @@
 /**
  * A list of database about Jobs
+ * 
+ * @author Evans Hebert
+ * @version 18 March 2021
  */
 public class DatabaseJob
 {

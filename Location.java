@@ -1,6 +1,9 @@
 /**
  * Informations about a location.
  * Contains province, city, and description of a location.
+ * 
+ * @author Evans Hebert
+ * @version 18 March 2021
  */
 public class Location
 {

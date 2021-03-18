@@ -1,6 +1,9 @@
 /**
  * Informations about a recruiter.
  * Contains ID, Name, email, Phone Number, and Location of a recruiter.
+ * 
+ * @author Evans Hebert
+ * @version 18 March 2021
  */
 public class Recruiter
 {
