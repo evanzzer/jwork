@@ -1,6 +1,8 @@
-
 /**
- * Main File
+ * The main file of the package. Contains main().
+ * 
+ * @author Evans Hebert
+ * @version 18 March 2021
  */
 public class JWork
 {

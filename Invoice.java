@@ -1,6 +1,8 @@
 
-/**
+/*
  * Invoice Class
+ * 
+ * A class that contains details about invoices.
  */
 public class Invoice
 {
@@ -10,9 +12,9 @@ public class Invoice
     private int totalFee;
     private Jobseeker jobseeker;
 
+    // Constructor
     public Invoice(int id, int idJob, String date, int totalFee, Jobseeker jobseeker)
     {
-        // Constructor
         this.id = id;
         this.idJob = idJob;
         this.date = date;
@@ -20,6 +22,7 @@ public class Invoice
         this.jobseeker = jobseeker;
     }
 
+    // Getter
     public int getId()
     {
         // Get id
@@ -50,6 +53,7 @@ public class Invoice
         return jobseeker;
     }
     
+    // Setter
     public void setId(int id)
     {
         // Set ID
@@ -80,8 +84,9 @@ public class Invoice
         this.jobseeker = jobseeker;
     }
     
+    // Other Functions
     public void printData()
     {
-        // code
+        // Some codes to be expected in the future
     }
 }

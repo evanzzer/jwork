@@ -1,5 +1,7 @@
 /*
  * Recruiter Class
+ * 
+ * A class that contains information about a recruiter.
  */
 public class Recruiter
 {
@@ -9,16 +11,17 @@ public class Recruiter
     private String phoneNumber;
     private Location location;
 
+    // Constructor
     public Recruiter(int id, String name, String email, String phoneNumber, Location location)
     {
-        // Constructor
         this.id = id;
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.location = location;
     }
-
+    
+    // Getter
     public int getId()
     {
         // Get ID
@@ -49,6 +52,7 @@ public class Recruiter
         return location;
     }
     
+    // Setter
     public void setId(int id)
     {
         // Set Id
@@ -79,6 +83,7 @@ public class Recruiter
         this.location = location;
     }
     
+    // Other Functions
     public void printData()
     {
         // Print out the name of the recruiter

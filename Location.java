@@ -1,6 +1,8 @@
 
 /*
  * Location Class
+ * 
+ * A class that contains informations about a location.
  */
 public class Location
 {
@@ -8,14 +10,15 @@ public class Location
     private String city;
     private String description;
     
+    // Constructor
     public Location(String province, String city, String description)
     {
-        // Constructor
         this.province = province;
         this.city = city;
         this.description = description;
     }
     
+    // Getter
     public String getProvince()
     {
         // Get Province
@@ -34,6 +37,7 @@ public class Location
         return description;
     }
     
+    // Setter
     public void setProvince(String province)
     {
         // Set Province
@@ -52,6 +56,7 @@ public class Location
         this.description = description;
     }
     
+    // Other Functions
     public void printData()
     {
         // Print Province

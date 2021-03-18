@@ -1,5 +1,7 @@
 /*
  * Jobseeker Class
+ * 
+ * A class that contains information about a jobseeker.
  */
 public class Jobseeker
 {
@@ -9,9 +11,9 @@ public class Jobseeker
     private String password;
     private String joinDate;
 
+    // Constructor
     public Jobseeker(int id, String name, String email, String password, String joinDate)
     {
-        // Constructor
         this.id = id;
         this.name = name;
         this.email = email;
@@ -19,6 +21,7 @@ public class Jobseeker
         this.joinDate = joinDate;
     }
     
+    // Getter
     public int getId()
     {
         // Get ID
@@ -49,6 +52,7 @@ public class Jobseeker
         return joinDate;
     }
     
+    // Setter
     public void setId(int id)
     {
         // Set ID
@@ -79,7 +83,8 @@ public class Jobseeker
         this.joinDate = joinDate;
     }
     
-    public void printDate()
+    // Other Functions
+    public void printData()
     {
         // Print out the name of Jobseeker
         System.out.println(name);

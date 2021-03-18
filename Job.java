@@ -1,6 +1,7 @@
-
-/**
+/*
  * Job Class
+ * 
+ * A class that contains information about a job.
  */
 public class Job
 {
@@ -10,9 +11,9 @@ public class Job
     private int fee;
     private String category;
 
+    // Constructor
     public Job(int id, String name, Recruiter recruiter, int fee, String category)
     {
-        // Constructor
         this.id = id;
         this.name = name;
         this.recruiter = recruiter;
@@ -20,6 +21,7 @@ public class Job
         this.category = category;
     }
 
+    // Getter
     public int getId()
     {
         // Get ID
@@ -50,6 +52,7 @@ public class Job
         return recruiter;
     }
     
+    // Setter
     public void setId(int id)
     {
         // Set ID
@@ -80,9 +83,10 @@ public class Job
         this.category = category;
     }
     
+    // Other Functions
     public void printData()
     {
-        // codes
+        // Some codes to be expected in the future
     }
     
 }

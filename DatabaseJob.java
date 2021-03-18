@@ -1,10 +1,13 @@
 /*
- * Database Class
+ * DatabaseJob Class
+ * 
+ * A list of database about Jobs
  */
 public class DatabaseJob
 {
     private String[] listJob;
     
+    // Constructor
     public DatabaseJob()
     {
         // Nothing to be assigned since the constructor doesn't have any parameters.
@@ -30,7 +33,7 @@ public class DatabaseJob
     
     public String[] getListJob()
     {
-        // Codes
+        // Get listJob
         return listJob;
     }
 }
