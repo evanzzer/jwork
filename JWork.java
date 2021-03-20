@@ -27,5 +27,10 @@ public class JWork
         System.out.println(recruiter.getName());
         // Get the Job Name
         job.printData();
+        
+        // Required Static Method to execute. The Code Below won't work!
+        // Soal No.11
+        // DatabaseJob.addJob(job);
+        // DatabaseRecruiter.addRecruiter(recruiter);
     }
 }
