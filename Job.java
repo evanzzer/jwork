@@ -130,11 +130,12 @@ public class Job
     
     // Other Functions
     /**
-     * Function under construction
+     * Print out the name of the job
      */
     public void printData()
     {
-        // Some codes to be expected in the future
+        // Print out the name of the job
+        System.out.println(name);
     }
     
 }

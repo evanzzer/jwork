@@ -130,10 +130,11 @@ public class Invoice
     
     // Other Functions
     /**
-     * Function under construction
+     * Print out the total fee
      */
     public void printData()
     {
-        // Some codes to be expected in the future
+        // Print out the total fee
+        System.out.println(totalFee);
     }
 }

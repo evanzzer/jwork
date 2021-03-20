@@ -56,6 +56,6 @@ public class DatabaseJob
     public String[] getListJob()
     {
         // Get listJob
-        return listJob;
+        return null;
     }
 }
