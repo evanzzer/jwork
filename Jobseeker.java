@@ -130,11 +130,18 @@ public class Jobseeker
     
     // Other Functions
     /**
-     * Print the name of the jobseeker
+     * Print the information of the jobseeker
      */
     public void printData()
     {
-        // Print out the name of Jobseeker
-        System.out.println(name);
+        // Print out the information of Jobseeker
+        System.out.println(
+            "========JOBSEEKER========\n" +
+            "ID      : " + id + "\n" +
+            "Name    : " + name + "\n" +
+            "email   : " + email + "\n" +
+            "password: " + password + "\n" + 
+            "joinDate: " + joinDate
+        );
     }
 }

@@ -2,27 +2,18 @@
  * A list of database about Jobs
  * 
  * @author Evans Hebert
- * @version 18 March 2021
+ * @version 25 March 2021
  */
 public class DatabaseJob
 {
-    private String[] listJob;
-    
-    /*
-     * Constructor
-     * Declares a new DatabaseJob Object
-     */ 
-    public DatabaseJob()
-    {
-        // Nothing to be assigned since the constructor doesn't have any parameters.
-    }
+    private static String[] listJob;
     
     /**
      * Add a new job
      * @param job A job Object
      * @return State to indicate a job has been successfully added
      */
-    public boolean addJob(Job job)
+    public static boolean addJob(Job job)
     {
         // Codes
         return false;
@@ -33,7 +24,7 @@ public class DatabaseJob
      * @param job A job Object
      * @return State to indicate a job has been successfully removed
      */
-    public boolean removeJob(Job job)
+    public static boolean removeJob(Job job)
     {
         // Codes
         return false;
@@ -43,7 +34,7 @@ public class DatabaseJob
      * Retrieve a specified job
      * @return A job object
      */
-    public Job getJob()
+    public static Job getJob()
     {
         // Codes
         return null;
@@ -53,7 +44,7 @@ public class DatabaseJob
      * Retrieve a list of job currently available
      * @return A list of jobs' name
      */
-    public String[] getListJob()
+    public static String[] getListJob()
     {
         // Get listJob
         return null;

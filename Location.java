@@ -86,11 +86,16 @@ public class Location
     
     // Other Functions
     /**
-     * Print out the province of a location
+     * Print out the information of a location
      */
     public void printData()
     {
         // Print Province
-        System.out.println(province);
+        System.out.println(
+            "========LOCATION========\n" +
+            "Province   : " + province + "\n" +
+            "City       : " + city + "\n" +
+            "Description: " + description
+        );
     }
 }

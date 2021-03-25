@@ -130,11 +130,18 @@ public class Invoice
     
     // Other Functions
     /**
-     * Print out the total fee
+     * Print out the information of an invoice
      */
     public void printData()
     {
-        // Print out the total fee
-        System.out.println(totalFee);
+        // Print out the information of an invoice
+        System.out.println(
+            "========INVOICE========\n" +
+            "ID       : " + id + "\n" +
+            "ID Job   : " + idJob + "\n" +
+            "Date     : " + date + "\n" +
+            "Total Fee: " + totalFee + "\n" +
+            "Jobseeker: " + jobseeker.getName()
+        );
     }
 }

@@ -130,11 +130,18 @@ public class Recruiter
     
     // Other Functions
     /**
-     * Prints the name of the recruiter
+     * Prints the information of the recruiter
      */
     public void printData()
     {
-        // Print out the name of the recruiter
-        System.out.println(name);
+        // Print out the information of the recruiter
+        System.out.println(
+            "========RECRUITER========\n" +
+            "ID          : " + id + "\n" +
+            "Nama        : " + name + "\n" +
+            "email       : " + email + "\n" +
+            "Phone Number: " + phoneNumber + "\n" +
+            "Location    : " + location.getProvince()
+        );
     }
 }

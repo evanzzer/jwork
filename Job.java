@@ -3,7 +3,7 @@
  * Contains ID, Name, Recruiter, Fee, and category of a job.
  * 
  * @author Evans Hebert
- * @version 18 March 2021
+ * @version 25 March 2021
  */
 public class Job
 {
@@ -11,13 +11,13 @@ public class Job
     private String name;
     private Recruiter recruiter;
     private int fee;
-    private String category;
+    private JobCategory category;
 
     /*
      * Constructor
      * Declares a new Job object
      */ 
-    public Job(int id, String name, Recruiter recruiter, int fee, String category)
+    public Job(int id, String name, Recruiter recruiter, int fee, JobCategory category)
     {
         this.id = id;
         this.name = name;
@@ -61,7 +61,7 @@ public class Job
      * Retrieve the Job Category
      * @return Job Category
      */
-    public String getCategory()
+    public JobCategory getCategory()
     {
         // Get category
         return category;
@@ -122,7 +122,7 @@ public class Job
      * Set the Job Category
      * @param category Job Category
      */
-    public void setCategory(String category)
+    public void setCategory(JobCategory category)
     {
         // Set Category
         this.category = category;
@@ -130,12 +130,19 @@ public class Job
     
     // Other Functions
     /**
-     * Print out the name of the job
+     * Print out the information of the job
      */
     public void printData()
     {
-        // Print out the name of the job
-        System.out.println(name);
+        // Print out the information of the job
+        System.out.println(
+            "===========JOB===========\n" +
+            "ID       : " + id + "\n" +
+            "Nama     : " + name + "\n" +
+            "Recruiter: " + recruiter.getName() + "\n" +
+            "Fee      : " + fee + "\n" +
+            "Category : " + category.toString()
+        );
     }
     
 }
