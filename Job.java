@@ -140,6 +140,7 @@ public class Job
             "ID       : " + id + "\n" +
             "Nama     : " + name + "\n" +
             "Recruiter: " + recruiter.getName() + "\n" +
+            "City     : " + recruiter.getLocation().getCity() + "\n" +
             "Fee      : " + fee + "\n" +
             "Category : " + category.toString()
         );
