@@ -145,5 +145,5 @@ public class Job
             "Category : " + category.toString()
         );
     }
-    
+
 }

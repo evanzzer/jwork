@@ -12,18 +12,22 @@ public class Invoice
     private String date;
     private int totalFee;
     private Jobseeker jobseeker;
+    private PaymentType paymentType;
+    private InvoiceStatus status;
 
     /*
      * Constructor
      * Declares a new Invoice object
      */
-    public Invoice(int id, int idJob, String date, int totalFee, Jobseeker jobseeker)
+    public Invoice(int id, int idJob, String date, int totalFee, Jobseeker jobseeker, PaymentType paymentType, InvoiceStatus status)
     {
         this.id = id;
         this.idJob = idJob;
         this.date = date;
         this.totalFee = totalFee;
         this.jobseeker = jobseeker;
+        this.paymentType = paymentType;
+        this.status = status;
     }
 
     // Getter
@@ -77,6 +81,26 @@ public class Invoice
         return jobseeker;
     }
     
+    /**
+     * Retrieve the payment type of the invoice
+     * @return Payment Type of the Invoice
+     */
+    public PaymentType getPaymentType()
+    {
+        // Get Payment Type
+        return paymentType;
+    }
+    
+    /**
+     * Retrive the status of the invoice
+     * @return Status of the Invoice
+     */
+    public InvoiceStatus getInvoiceStatus()
+    {
+        // Get Status
+        return status;
+    }
+    
     // Setter
     /**
      * Set the ID of an Invoice
@@ -128,6 +152,26 @@ public class Invoice
         this.jobseeker = jobseeker;
     }
     
+    /**
+     * Set the payment type of the invoice
+     * @param paymentType Payment Type of the Invoice
+     */
+    public void setPaymentType(PaymentType paymentType)
+    {
+        // Set Payment Type
+        this.paymentType = paymentType;
+    }
+    
+    /**
+     * Set the status of the invoice
+     * @param status Invoice Statuss
+     */
+    public void setInvoiceStatus(InvoiceStatus status)
+    {
+        // Set Status
+        this.status = status;
+    }
+        
     // Other Functions
     /**
      * Print out the information of an invoice
@@ -141,7 +185,9 @@ public class Invoice
             "ID Job   : " + idJob + "\n" +
             "Date     : " + date + "\n" +
             "Total Fee: " + totalFee + "\n" +
-            "Jobseeker: " + jobseeker.getName()
+            "Jobseeker: " + jobseeker.getName() + "\n" +
+            "Payment  : " + paymentType.toString() + "\n" +
+            "Status   : " + status.toString()
         );
     }
 }

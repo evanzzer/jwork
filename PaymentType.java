@@ -8,8 +8,10 @@ public enum PaymentType
 {
     BankPayment, EwalletPayment;
     
-    public String toString() {
-        switch(this) {
+    public String toString() 
+    {
+        switch(this) 
+        {
             case BankPayment:
                 return "Bank Payment";
             case EwalletPayment:

@@ -11,8 +11,10 @@ public enum JobCategory
     /**
      * Convert an enum to string
      */
-    public String toString() {
-        switch(this) {
+    public String toString() 
+    {
+        switch(this) 
+        {
             case WebDeveloper:
                 return "Web Developer";
             case FrontEnd:
