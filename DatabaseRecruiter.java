@@ -41,12 +41,12 @@ public class DatabaseRecruiter
     }
     
     /**
-     * Retrieve a list of job currently available
-     * @return A list of jobs' name
+     * Retrieve a list of recruiter
+     * @return A list of recruiters' name
      */
     public static String[] getListRecruiter()
     {
         // Get listRecruiter
-        return null;
+        return listRecruiter;
     }
 }

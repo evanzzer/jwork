@@ -47,6 +47,6 @@ public class DatabaseJobseeker
     public static String[] getListJobseeker()
     {
         // Get listJobseeker
-        return null;
+        return listJobseeker;
     }
 }

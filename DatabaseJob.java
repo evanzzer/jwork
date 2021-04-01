@@ -47,6 +47,6 @@ public class DatabaseJob
     public static String[] getListJob()
     {
         // Get listJob
-        return null;
+        return listJob;
     }
 }

@@ -6,18 +6,18 @@
  */
 public enum PaymentType
 {
-    BankPayment, EwalletPayment;
+    BankPayment("Bank Payment"), 
+    EwalletPayment("E-Wallet Payment");
+    
+    private String description;
+    
+    PaymentType(String description)
+    {
+        this.description = description;
+    }
     
     public String toString() 
     {
-        switch(this) 
-        {
-            case BankPayment:
-                return "Bank Payment";
-            case EwalletPayment:
-                return "E-Wallet Payment";
-            default:
-                return "Not Registered";
-        }
+        return description;
     }
 }

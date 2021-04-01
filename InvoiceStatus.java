@@ -6,20 +6,19 @@
  */
 public enum InvoiceStatus
 {
-    Ongoing, Finished, Cancelled;
+    Ongoing("Ongoing"), 
+    Finished("Finished"), 
+    Cancelled("Cancelled");
+    
+    private String description;
+    
+    InvoiceStatus(String description)
+    {
+        this.description = description;
+    }
     
     public String toString()
     {
-        switch (this)
-        {
-            case Ongoing:
-                return "Ongoing";
-            case Finished:
-                return "Finished";
-            case Cancelled:
-                return "Cancelled";
-            default:
-                return "Not Registered";
-        }
+        return description;
     }
 }
