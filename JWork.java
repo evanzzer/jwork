@@ -10,27 +10,41 @@ public class JWork
     {       
         // Location
         Location location = new Location("Jakarta", "Jakarta Utara", "Tempat Lahir");
+
         // Recruiter
         Recruiter recruiter = new Recruiter(1, "Evans Hebert", "evans.hebert@ui.ac.id", "081234567890", location);
+
         // Job
         Job job1 = new Job(1, "Asisten", recruiter, 100000, JobCategory.BackEnd);
-        Job job2 = new Job(2, "Dosen", recruiter, 200000, JobCategory.DevOps);
+        // Job job2 = new Job(2, "Dosen", recruiter, 200000, JobCategory.DevOps); // Case Study
+
         // Jobseeker
         Jobseeker jobseeker = new Jobseeker(1, "Tono", "tono@ui.ac.id", "password", "31-02-2021");
-        // Bonus
-        Bonus bonus = new Bonus(1, "PBOASIK", 25000, 150000, true);
 
-        // EwalletPayment
-        EwalletPayment ewalletPayment1 = new EwalletPayment(1, job1, "01-04-2021", jobseeker, InvoiceStatus.Ongoing);
-        EwalletPayment ewalletPayment2 = new EwalletPayment(2, job1, "01-04-2021", jobseeker, bonus, InvoiceStatus.Ongoing);
-        EwalletPayment ewalletPayment3 = new EwalletPayment(3, job2, "01-04-2021", jobseeker, bonus, InvoiceStatus.Ongoing);
+        // // Bonus
+        // Bonus bonus = new Bonus(1, "PBOASIK", 25000, 150000, true); // Case Study
 
-        ewalletPayment1.setTotalFee();
-        ewalletPayment2.setTotalFee();
-        ewalletPayment3.setTotalFee();
+        // Bank Payment - Post Test //
+        BankPayment bankPayment1 = new BankPayment(1, job1, "02-04-2021", jobseeker, InvoiceStatus.Finished);
+        BankPayment bankPayment2 = new BankPayment(2, job1, "02-04-2021", jobseeker, InvoiceStatus.Finished, 5000);
 
-        ewalletPayment1.printData();
-        ewalletPayment2.printData();
-        ewalletPayment3.printData();
+        bankPayment1.setTotalFee();
+        bankPayment2.setTotalFee();
+
+        bankPayment1.printData();
+        bankPayment2.printData();
+
+        // EwalletPayment - Case Study //
+        // EwalletPayment ewalletPayment1 = new EwalletPayment(1, job1, "01-04-2021", jobseeker, InvoiceStatus.Ongoing);
+        // EwalletPayment ewalletPayment2 = new EwalletPayment(2, job1, "01-04-2021", jobseeker, bonus, InvoiceStatus.Ongoing);
+        // EwalletPayment ewalletPayment3 = new EwalletPayment(3, job2, "01-04-2021", jobseeker, bonus, InvoiceStatus.Ongoing);
+
+        // ewalletPayment1.setTotalFee();
+        // ewalletPayment2.setTotalFee();
+        // ewalletPayment3.setTotalFee();
+
+        // ewalletPayment1.printData();
+        // ewalletPayment2.printData();
+        // ewalletPayment3.printData();
     }
 }
