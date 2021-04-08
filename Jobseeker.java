@@ -1,9 +1,16 @@
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Informations about a jobseeker.
  * Contains ID, name, email, password, and join date of a jobseeker
  * 
  * @author Evans Hebert
- * @version 18 March 2021
+ * @version 8 April 2021
  */
 public class Jobseeker
 {
@@ -11,19 +18,41 @@ public class Jobseeker
     private String name;
     private String email;
     private String password;
-    private String joinDate;
+    public Calendar joinDate;
 
     /*
      * Constructor
      * Declare a new Jobseeker object
      */ 
-    public Jobseeker(int id, String name, String email, String password, String joinDate)
+    public Jobseeker(int id, String name, String email, String password, Calendar joinDate)
     {
         this.id = id;
         this.name = name;
-        this.email = email;
-        this.password = password;
         this.joinDate = joinDate;
+        setEmail(email);
+        setPassword(password);
+    }
+
+    public Jobseeker(int id, String name, String email, String password, int year, int month, int dayOfMonth)
+    {
+        this.id = id;
+        this.name = name;
+
+        setEmail(email);
+        setPassword(password);
+        
+        joinDate = new GregorianCalendar(year, month, dayOfMonth);
+    }
+
+    public Jobseeker(int id, String name, String email, String password)
+    {
+        this.id = id;
+        this.name = name;
+
+        setEmail(email);
+        setPassword(password);
+
+        joinDate = Calendar.getInstance();
     }
     
     // Getter
@@ -71,7 +100,7 @@ public class Jobseeker
      * Retrieve the join date of a jobseeker
      * @return Jobseeker's join date
      */
-    public String getJoinDate()
+    public Calendar getJoinDate()
     {
         // Get Join Date
         return joinDate;
@@ -105,7 +134,11 @@ public class Jobseeker
     public void setEmail(String email)
     {
         // Set Email
-        this.email = email;
+        String regex = "^[a-zA-Z0-9&*_~]+(\\.[a-zA-Z0-9&*_~]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*$";
+        Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
+        Matcher matcher = pattern.matcher(email);
+
+        this.email = matcher.find() ? email : "";
     }
     
     /**
@@ -115,33 +148,49 @@ public class Jobseeker
     public void setPassword(String password)
     {
         // Set Password
-        this.password = password;
+        String regex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d).{6,}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(password);
+
+        this.password = matcher.find() ? password : "";
     }
     
     /**
-     * Set the join date of a jobseeker
+     * Set the join date of a jobseeker using Calendar as the data type
      * @param joinDate Jobseeker's join date
      */
-    public void setJoinDate(String joinDate)
+    public void setJoinDate(Calendar joinDate)
     {
         // Set Join Date
         this.joinDate = joinDate;
     }
-    
+
+    /**
+     * Set the join date of a jobseeker using Calendar as the data type
+     * @param year Jobseeker's join date's year
+     * @param month Jobseeker's join date's month
+     * @param dayOfMonth JobSeeker's join date's day
+     */
+    public void setJoinDate(int year, int month, int dayOfMonth)
+    {
+        // Set Join Date
+        joinDate = new GregorianCalendar(year, month, dayOfMonth);
+    }
+
     // Other Functions
     /**
-     * Print the information of the jobseeker
+     * Return the information of the jobseeker
+     * @return Information of the Jobseeker
      */
-    public void printData()
+    public String toString()
     {
-        // Print out the information of Jobseeker
-        System.out.println(
-            "========JOBSEEKER========\n" +
-            "ID      : " + id + "\n" +
+        SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
+        String date = joinDate != null ? format.format(joinDate.getTime()) : "Not Available";
+        // Return the info
+        return "ID      : " + id + "\n" +
             "Name    : " + name + "\n" +
             "email   : " + email + "\n" +
             "password: " + password + "\n" + 
-            "joinDate: " + joinDate
-        );
+            "joinDate: " + date;
     }
 }

@@ -3,7 +3,7 @@
  * Contains ID, Name, Recruiter, Fee, and category of a job.
  * 
  * @author Evans Hebert
- * @version 25 March 2021
+ * @version 8 April 2021
  */
 public class Job
 {
@@ -130,20 +130,18 @@ public class Job
     
     // Other Functions
     /**
-     * Print out the information of the job
+     * Return out the information of the job
+     * @return Information of the Job
      */
-    public void printData()
+    public String toString()
     {
-        // Print out the information of the job
-        System.out.println(
-            "===========JOB===========\n" +
-            "ID       : " + id + "\n" +
+        // Return the information of the job
+        return "ID       : " + id + "\n" +
             "Nama     : " + name + "\n" +
             "Recruiter: " + recruiter.getName() + "\n" +
             "City     : " + recruiter.getLocation().getCity() + "\n" +
             "Fee      : " + fee + "\n" +
-            "Category : " + category.toString()
-        );
+            "Category : " + category.toString();
     }
 
 }

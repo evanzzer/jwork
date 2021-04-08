@@ -3,7 +3,7 @@
  * Contains province, city, and description of a location.
  * 
  * @author Evans Hebert
- * @version 18 March 2021
+ * @version 8 April 2021
  */
 public class Location
 {
@@ -86,16 +86,14 @@ public class Location
     
     // Other Functions
     /**
-     * Print out the information of a location
+     * Return out the information of a location
+     * @return Information of a Location
      */
-    public void printData()
+    public String toString()
     {
-        // Print Province
-        System.out.println(
-            "========LOCATION========\n" +
-            "Province   : " + province + "\n" +
+        // Return Province
+        return "Province   : " + province + "\n" +
             "City       : " + city + "\n" +
-            "Description: " + description
-        );
+            "Description: " + description;
     }
 }

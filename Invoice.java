@@ -4,7 +4,7 @@
  * @author Evans Hebert
  * @version 01 April 2021
  */
-public abstract class Invoice
+abstract class Invoice
 {
     private int id;
     private Job job;

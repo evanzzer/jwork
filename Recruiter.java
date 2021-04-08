@@ -3,7 +3,7 @@
  * Contains ID, Name, email, Phone Number, and Location of a recruiter.
  * 
  * @author Evans Hebert
- * @version 18 March 2021
+ * @version 8 April 2021
  */
 public class Recruiter
 {
@@ -130,18 +130,16 @@ public class Recruiter
     
     // Other Functions
     /**
-     * Prints the information of the recruiter
+     * Return the information of the recruiter
+     * @return Information of the Recruiter
      */
-    public void printData()
+    public String toString()
     {
-        // Print out the information of the recruiter
-        System.out.println(
-            "========RECRUITER========\n" +
-            "ID          : " + id + "\n" +
+        // Return the information of the recruiter
+        return "ID          : " + id + "\n" +
             "Nama        : " + name + "\n" +
             "email       : " + email + "\n" +
             "Phone Number: " + phoneNumber + "\n" +
-            "Location    : " + location.getProvince()
-        );
+            "Location    : " + location.getProvince();
     }
 }

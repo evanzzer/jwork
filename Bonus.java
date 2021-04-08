@@ -2,7 +2,7 @@
  * Details about Bonus.
  * 
  * @author Evans Hebert
- * @version 01 April 2021
+ * @version 08 April 2021
  */
 public class Bonus
 {
@@ -115,18 +115,16 @@ public class Bonus
     }
     
     /**
-     * Prints the information of the recruiter
+     * Return the information of the recruiter
+     * @return Information of the Recruiter
      */
-    public void printData()
+    public String toString()
     {
-        // Print out the information of the recruiter
-        System.out.println(
-            "=============BONUS==============\n" +
-            "ID           : " + id + "\n" +
+        // Return the information of the recruiter
+        return "ID           : " + id + "\n" +
             "Referral Code: " + referralCode + "\n" +
             "Extra Fee    : " + extraFee + "\n" +
             "Min Total Fee: " + minTotalFee + "\n" +
-            "Status Active: " + active
-        );
+            "Status Active: " + active;
     }    
 }
