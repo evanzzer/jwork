@@ -51,8 +51,8 @@ public class Jobseeker
 
         setEmail(email);
         setPassword(password);
-
-        joinDate = Calendar.getInstance();
+        
+        // joinDate = Calendar.getInstance();
     }
     
     // Getter
@@ -185,7 +185,7 @@ public class Jobseeker
     public String toString()
     {
         SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
-        String date = joinDate != null ? format.format(joinDate.getTime()) : "Not Available";
+        String date = joinDate != null ? format.format(joinDate.getTime()) : "";
         // Return the info
         return "ID      : " + id + "\n" +
             "Name    : " + name + "\n" +

@@ -11,8 +11,8 @@ public class JWork
     public static void main(String[] args)
     {       
         // Jobseeker
-        Jobseeker jobseeker1 = new Jobseeker(1, "Tono", "to..no@ui.ac.id", "plain", new GregorianCalendar(2021, 4, 8));
-        Jobseeker jobseeker2 = new Jobseeker(2, "Tono", "tono.bener@ui.ac.id", "KomPleks123", 2021, 4, 8);
+        Jobseeker jobseeker1 = new Jobseeker(1, "Tono", "to..no@ui.ac.id", "plain", new GregorianCalendar(2021, 3, 8));
+        Jobseeker jobseeker2 = new Jobseeker(2, "Tono", "tono.bener@ui.ac.id", "KomPleks123", 2021, 3, 8);
         Jobseeker jobseeker3 = new Jobseeker(3, "Tono", "terserah", "TeRsEr4h");
 
         System.out.println(jobseeker1.toString());
