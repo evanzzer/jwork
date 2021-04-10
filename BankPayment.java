@@ -67,18 +67,18 @@ public class BankPayment extends Invoice
     
     /**
      * Abstract Method from Invoice
-     * Print out the information of the invoice
+     * Return out the information of the invoice
+     * @return Information of the Invoice
      */
     public String toString()
     {
         SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
-        String date = getDate() == null ? format.format(getDate().getTime()) : "";
         
         // Print out the information of an invoice
         return "========INVOICE========\n" +
             "ID       : " + getId() + "\n" +
             "Job Name : " + getJob().getName() + "\n" +
-            "Date     : " + date + "\n" +
+            "Date     : " + format.format(getDate().getTime()) + "\n" +
             "Jobseeker: " + getJobseeker().getName() + "\n" +
             "Payment  : " + getPaymentType().toString() + "\n" +
             "Status   : " + getInvoiceStatus() + "\n" + 
