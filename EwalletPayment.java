@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 /**
  * Details about e-wallet payment.
  * 
@@ -10,15 +12,15 @@ public class EwalletPayment extends Invoice
     private Bonus bonus;
     
     // Constructor
-    public EwalletPayment(int id, Job job, String date, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
+    public EwalletPayment(int id, Job job, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
     {
-        super(id, job, date, jobseeker, invoiceStatus);
+        super(id, job, jobseeker, invoiceStatus);
     }
     
     // Another Constructor
-    public EwalletPayment(int id, Job job, String date, Jobseeker jobseeker, Bonus bonus, InvoiceStatus invoiceStatus)
+    public EwalletPayment(int id, Job job, Jobseeker jobseeker, Bonus bonus, InvoiceStatus invoiceStatus)
     {
-        super(id, job, date, jobseeker, invoiceStatus);
+        super(id, job, jobseeker, invoiceStatus);
         this.bonus = bonus;
     }
     
@@ -66,14 +68,16 @@ public class EwalletPayment extends Invoice
      * Abstract Method from Invoice
      * Print out the information of the invoice
      */
-    public void printData()
+    public String toString()
     {
         // Print out the information of an invoice
-        System.out.println(
-            "========INVOICE========\n" +
+        SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
+        String date = getDate() == null ? format.format(getDate().getTime()) : "";
+
+        return "========INVOICE========\n" +
             "ID       : " + getId() + "\n" +
             "Job Name : " + getJob().getName() + "\n" +
-            "Date     : " + getDate() + "\n" +
+            "Date     : " + date + "\n" +
             "Jobseeker: " + getJobseeker().getName() + "\n" +
             "Payment  : " + getPaymentType().toString() + "\n" +
             "Status   : " + getInvoiceStatus() + "\n" + 
@@ -82,7 +86,6 @@ public class EwalletPayment extends Invoice
                 (bonus != null && bonus.getActive() && totalFee > bonus.getMinTotalFee()) 
                     ? ("\nReferral Code: " + bonus.getReferralCode()) 
                     : ""
-            )
-        );
+            );
     }
 }

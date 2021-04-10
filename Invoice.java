@@ -1,14 +1,17 @@
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 /**
  * Details about invoices.
  * 
  * @author Evans Hebert
- * @version 01 April 2021
+ * @version 10 April 2021
  */
 abstract class Invoice
 {
     private int id;
     private Job job;
-    private String date;
+    private Calendar date;
     protected int totalFee;
     private Jobseeker jobseeker;
     private InvoiceStatus invoiceStatus;
@@ -17,13 +20,13 @@ abstract class Invoice
      * Constructor
      * Declares a new Invoice object
      */
-    public Invoice(int id, Job job, String date, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
+    public Invoice(int id, Job job, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
     {
         this.id = id;
         this.job = job;
-        this.date = date;
         this.jobseeker = jobseeker;
         this.invoiceStatus = invoiceStatus;
+        date = Calendar.getInstance();
     }
 
     // Getter
@@ -51,7 +54,7 @@ abstract class Invoice
      * Retrieve invoice date
      * @return Invoice Date
      */
-    public String getDate()
+    public Calendar getDate()
     {
         // Get Date
         return date;
@@ -118,10 +121,22 @@ abstract class Invoice
      * Set the date of an Invoice
      * @param date Invoice Date
      */
-    public void setDate(String date)
+    public void setDate(Calendar date)
     {
         // Set Date
         this.date = date;
+    }
+
+    /**
+     * Set the date of an Invoice by using year, month, and day of Month
+     * @param year Invoice Date's year
+     * @param month Invoice Date's month
+     * @param dayOfMonth Invoice Date
+     */
+    public void setDate(int year, int month, int dayOfMonth)
+    {
+        // Set Date
+        date = new GregorianCalendar(year, month, dayOfMonth);
     }
 
     /**
@@ -153,5 +168,5 @@ abstract class Invoice
     /**
      * Print out the information of an invoice
      */
-    public abstract void printData();
+    public abstract String toString();
 }

@@ -1,3 +1,6 @@
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 /**
  * Details about bank payment.
  * 
@@ -10,15 +13,15 @@ public class BankPayment extends Invoice
     private int adminFee;
     
     // Constructor
-    public BankPayment(int id, Job job, String date, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
+    public BankPayment(int id, Job job, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
     {
-        super(id, job, date, jobseeker, invoiceStatus);
+        super(id, job, jobseeker, invoiceStatus);
     }
     
     // Another Constructor
-    public BankPayment(int id, Job job, String date, Jobseeker jobseeker, InvoiceStatus invoiceStatus, int adminFee)
+    public BankPayment(int id, Job job, Jobseeker jobseeker, InvoiceStatus invoiceStatus, int adminFee)
     {
-        super(id, job, date, jobseeker, invoiceStatus);
+        super(id, job, jobseeker, invoiceStatus);
         this.adminFee = adminFee;
     }
     
@@ -66,19 +69,20 @@ public class BankPayment extends Invoice
      * Abstract Method from Invoice
      * Print out the information of the invoice
      */
-    public void printData()
+    public String toString()
     {
+        SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
+        String date = getDate() == null ? format.format(getDate().getTime()) : "";
+        
         // Print out the information of an invoice
-        System.out.println(
-            "========INVOICE========\n" +
+        return "========INVOICE========\n" +
             "ID       : " + getId() + "\n" +
             "Job Name : " + getJob().getName() + "\n" +
-            "Date     : " + getDate() + "\n" +
+            "Date     : " + date + "\n" +
             "Jobseeker: " + getJobseeker().getName() + "\n" +
             "Payment  : " + getPaymentType().toString() + "\n" +
             "Status   : " + getInvoiceStatus() + "\n" + 
             "Admin Fee: " + adminFee + "\n" +
-            "Total Fee: " + getTotalFee()
-        );
+            "Total Fee: " + getTotalFee();
     }
 }
