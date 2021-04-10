@@ -20,13 +20,16 @@ public class JWork
         Job job = new Job(1, "Asisten", recruiter, 100000, JobCategory.BackEnd);
 
         // Bonus
-        Bonus bonus = new Bonus(1, "PBOASIK", 25000, 150000, true);
+        Bonus bonus = new Bonus(1, "PBOASIK", 25000, 50000, true);
 
         // Jobseeker
         Jobseeker jobseeker1 = new Jobseeker(1, "Tono", "to..no@ui.ac.id", "plain", new GregorianCalendar(2021, 3, 8));
 
         EwalletPayment invoice1 = new EwalletPayment(1, job, jobseeker1, bonus, InvoiceStatus.Finished);
         BankPayment invoice2 = new BankPayment(2, job, jobseeker1, InvoiceStatus.Finished);
+        
+        invoice1.setTotalFee();
+        invoice2.setTotalFee();
 
         System.out.println(invoice1.toString());
         System.out.println(invoice2.toString());
