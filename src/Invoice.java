@@ -156,7 +156,7 @@ abstract class Invoice
     
     /**
      * Set the status of the invoice
-     * @param status Invoice Statuss
+     * @param invoiceStatus Invoice Statuss
      */
     public void setInvoiceStatus(InvoiceStatus invoiceStatus)
     {
