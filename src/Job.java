@@ -1,5 +1,5 @@
 /**
- * Informations about a job.
+ * Information about a job.
  * Contains ID, Name, Recruiter, Fee, and category of a job.
  * 
  * @author Evans Hebert
@@ -137,7 +137,7 @@ public class Job
     {
         // Return the information of the job
         return "ID       : " + id + "\n" +
-            "Nama     : " + name + "\n" +
+            "Name     : " + name + "\n" +
             "Recruiter: " + recruiter.getName() + "\n" +
             "City     : " + recruiter.getLocation().getCity() + "\n" +
             "Fee      : " + fee + "\n" +

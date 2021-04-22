@@ -1,5 +1,5 @@
 /**
- * Informations about a recruiter.
+ * Information about a recruiter.
  * Contains ID, Name, email, Phone Number, and Location of a recruiter.
  * 
  * @author Evans Hebert
@@ -137,7 +137,7 @@ public class Recruiter
     {
         // Return the information of the recruiter
         return "ID          : " + id + "\n" +
-            "Nama        : " + name + "\n" +
+            "Name        : " + name + "\n" +
             "email       : " + email + "\n" +
             "Phone Number: " + phoneNumber + "\n" +
             "Location    : " + location.getProvince();

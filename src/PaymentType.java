@@ -9,7 +9,7 @@ public enum PaymentType
     BankPayment("Bank Payment"), 
     EwalletPayment("E-Wallet Payment");
     
-    private String description;
+    private final String description;
     
     PaymentType(String description)
     {

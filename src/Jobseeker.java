@@ -6,7 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Informations about a jobseeker.
+ * Information about a jobseeker.
  * Contains ID, name, email, password, and join date of a jobseeker
  * 
  * @author Evans Hebert

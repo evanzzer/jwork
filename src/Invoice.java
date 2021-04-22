@@ -87,7 +87,7 @@ abstract class Invoice
     public abstract PaymentType getPaymentType();
     
     /**
-     * Retrive the status of the invoice
+     * Retrieve the status of the invoice
      * @return Status of the Invoice
      */
     public InvoiceStatus getInvoiceStatus()
@@ -109,7 +109,7 @@ abstract class Invoice
     
     /**
      * Set the Job of an Invoice
-     * @param idJob Job of an Invoice
+     * @param job Job of an Invoice
      */
     public void setJob(Job job)
     {
@@ -156,7 +156,7 @@ abstract class Invoice
     
     /**
      * Set the status of the invoice
-     * @param invoiceStatus Invoice Statuss
+     * @param invoiceStatus Invoice Status
      */
     public void setInvoiceStatus(InvoiceStatus invoiceStatus)
     {

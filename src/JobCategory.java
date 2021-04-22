@@ -15,7 +15,7 @@ public enum JobCategory
     DataScientist("Data Scientist"), 
     DataAnalyst("Data Analyst");
     
-    private String description;
+    private final String description;
     
     JobCategory(String description)
     {

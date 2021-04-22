@@ -46,7 +46,7 @@ public class BankPayment extends Invoice
     
     /**
      * Set Admin Fee of an invoice
-     * @param bonus The bonus to be set to an invoice
+     * @param adminFee The admin fee to be set to an invoice
      */
     public void setAdminFee(int adminFee)
     {

@@ -10,7 +10,7 @@ public enum InvoiceStatus
     Finished("Finished"), 
     Cancelled("Cancelled");
     
-    private String description;
+    private final String description;
     
     InvoiceStatus(String description)
     {

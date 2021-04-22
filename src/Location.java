@@ -1,5 +1,5 @@
 /**
- * Informations about a location.
+ * Information about a location.
  * Contains province, city, and description of a location.
  * 
  * @author Evans Hebert
@@ -76,7 +76,7 @@ public class Location
     
     /**
      * Set the description of the location
-     * @param province Location's description
+     * @param description Location's description
      */
     public void setDescription(String description)
     {
