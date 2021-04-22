@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -5,12 +6,12 @@ import java.util.GregorianCalendar;
  * Details about invoices.
  * 
  * @author Evans Hebert
- * @version 10 April 2021
+ * @version 22 April 2021
  */
 abstract class Invoice
 {
     private int id;
-    private Job job;
+    private ArrayList<Job> jobs;
     private Calendar date;
     protected int totalFee;
     private Jobseeker jobseeker;
@@ -20,12 +21,12 @@ abstract class Invoice
      * Constructor
      * Declares a new Invoice object
      */
-    public Invoice(int id, Job job, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
+    public Invoice(int id, ArrayList<Job> jobs, Jobseeker jobseeker)
     {
         this.id = id;
-        this.job = job;
+        this.jobs = jobs;
         this.jobseeker = jobseeker;
-        this.invoiceStatus = invoiceStatus;
+        invoiceStatus = InvoiceStatus.Ongoing;
         date = Calendar.getInstance();
     }
 
@@ -44,10 +45,10 @@ abstract class Invoice
      * Retrieve Invoice Job
      * @return Invoice Job
      */
-    public Job getJob()
+    public ArrayList<Job> getJob()
     {
         // Get ID Job
-        return job;
+        return jobs;
     }
     
     /**
@@ -95,7 +96,7 @@ abstract class Invoice
         // Get Status
         return invoiceStatus;
     }
-    
+
     // Setter
     /**
      * Set the ID of an Invoice
@@ -109,12 +110,12 @@ abstract class Invoice
     
     /**
      * Set the Job of an Invoice
-     * @param job Job of an Invoice
+     * @param jobs Job of an Invoice
      */
-    public void setJob(Job job)
+    public void setJob(ArrayList<Job> jobs)
     {
         // Set Jobs
-        this.job = job;
+        this.jobs = jobs;
     }
     
     /**
@@ -163,7 +164,7 @@ abstract class Invoice
         // Set Status
         this.invoiceStatus = invoiceStatus;
     }
-        
+
     // Other Functions
     /**
      * Print out the information of an invoice

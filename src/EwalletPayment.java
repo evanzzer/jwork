@@ -1,10 +1,14 @@
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
+
 /**
  * Details about e-wallet payment.
  * 
  * @author Evans Hebert
- * @version 01 April 2021
+ * @version 22 April 2021
  */
 public class EwalletPayment extends Invoice
 {
@@ -12,15 +16,15 @@ public class EwalletPayment extends Invoice
     private Bonus bonus;
     
     // Constructor
-    public EwalletPayment(int id, Job job, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
+    public EwalletPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker)
     {
-        super(id, job, jobseeker, invoiceStatus);
+        super(id, jobs, jobseeker);
     }
     
     // Another Constructor
-    public EwalletPayment(int id, Job job, Jobseeker jobseeker, Bonus bonus, InvoiceStatus invoiceStatus)
+    public EwalletPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker, Bonus bonus, InvoiceStatus invoiceStatus)
     {
-        super(id, job, jobseeker, invoiceStatus);
+        super(id, jobs, jobseeker);
         this.bonus = bonus;
     }
     
@@ -58,7 +62,7 @@ public class EwalletPayment extends Invoice
      */
     public void setTotalFee()
     {
-        totalFee = getJob().getFee();
+        getJob().forEach(job -> totalFee += job.getFee());
         if (bonus != null && bonus.getActive() && totalFee > bonus.getMinTotalFee()) {
             totalFee += bonus.getExtraFee();
         }
@@ -73,10 +77,14 @@ public class EwalletPayment extends Invoice
     {
         // Print out the information of an invoice
         SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
+        List<String> jobNames = getJob()
+                .stream()
+                .map(Job::getName)
+                .collect(Collectors.toList());
 
-        return "========INVOICE========\n" +
+        return "======== INVOICE ========\n" +
             "ID       : " + getId() + "\n" +
-            "Job Name : " + getJob().getName() + "\n" +
+            "Job Name : " + String.join(",", jobNames) + "\n" +
             "Date     : " + format.format(getDate().getTime()) + "\n" +
             "Jobseeker: " + getJobseeker().getName() + "\n" +
             "Payment  : " + getPaymentType().toString() + "\n" +

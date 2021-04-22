@@ -121,7 +121,8 @@ public class Bonus
     public String toString()
     {
         // Return the information of the recruiter
-        return "ID           : " + id + "\n" +
+        return "======== BONUS ========\n" +
+            "ID           : " + id + "\n" +
             "Referral Code: " + referralCode + "\n" +
             "Extra Fee    : " + extraFee + "\n" +
             "Min Total Fee: " + minTotalFee + "\n" +

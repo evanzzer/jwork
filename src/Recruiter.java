@@ -136,7 +136,8 @@ public class Recruiter
     public String toString()
     {
         // Return the information of the recruiter
-        return "ID          : " + id + "\n" +
+        return "====== RECRUITER ======\n" +
+            "ID          : " + id + "\n" +
             "Name        : " + name + "\n" +
             "email       : " + email + "\n" +
             "Phone Number: " + phoneNumber + "\n" +

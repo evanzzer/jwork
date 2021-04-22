@@ -136,7 +136,8 @@ public class Job
     public String toString()
     {
         // Return the information of the job
-        return "ID       : " + id + "\n" +
+        return "======== JOB ========\n" +
+            "ID       : " + id + "\n" +
             "Name     : " + name + "\n" +
             "Recruiter: " + recruiter.getName() + "\n" +
             "City     : " + recruiter.getLocation().getCity() + "\n" +

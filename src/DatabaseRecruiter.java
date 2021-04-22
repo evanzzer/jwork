@@ -1,12 +1,50 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * A list of database about Recruiter
  * 
  * @author Evans Hebert
- * @version 25 March 2021
+ * @version 22 April 2021
  */
 public class DatabaseRecruiter
 {
-    private static String[] listRecruiter;
+    private static final ArrayList<Recruiter> RECRUITER_DATABASE = new ArrayList<>();
+    private static int lastId = 0;
+
+    /**
+     * Retrieve a list of recruiter objects
+     * @return A list of recruiter objects
+     */
+    public static ArrayList<Recruiter> getRecruiterDatabase()
+    {
+        // Get listRecruiter
+        return RECRUITER_DATABASE;
+    }
+
+    /**
+     * Retrieve the last ID of the database
+     * @return Last ID in Integer
+     */
+    public static int getLastId()
+    {
+        return lastId;
+    }
+
+    /**
+     * Retrieve a specified recruiter that can be found by ID
+     * @return A recruiter object
+     */
+    public static Recruiter getRecruiterById(int id)
+    {
+        for (Recruiter recruiter : RECRUITER_DATABASE) {
+            if (recruiter.getId() == id) {
+                return recruiter;
+            }
+        }
+        return null;
+    }
     
     /**
      * Add a new recruiter
@@ -15,38 +53,24 @@ public class DatabaseRecruiter
      */
     public static boolean addRecruiter(Recruiter recruiter)
     {
-        // Codes
-        return false;
+        RECRUITER_DATABASE.add(recruiter);
+        lastId = recruiter.getId();
+        return true;
     }
     
     /**
-     * Remove existing recruiter
-     * @param recruiter A recruiter Object
+     * Remove existing recruiter by ID
+     * @param id A recruiter's ID
      * @return State to indicate a recruiter has been successfully removed
      */
-    public static boolean removeRecruiter(Recruiter recruiter)
+    public static boolean removeRecruiter(int id)
     {
-        // Codes
+        for (Recruiter recruiter : RECRUITER_DATABASE) {
+            if (recruiter.getId() == id) {
+                RECRUITER_DATABASE.remove(recruiter);
+                return true;
+            }
+        }
         return false;
-    }
-    
-    /**
-     * Retrieve a specified recruiter
-     * @return A recruiter object
-     */
-    public static Recruiter getRecruiter()
-    {
-        // Codes
-        return null;
-    }
-    
-    /**
-     * Retrieve a list of recruiter
-     * @return A list of recruiters' name
-     */
-    public static String[] getListRecruiter()
-    {
-        // Get listRecruiter
-        return listRecruiter;
     }
 }

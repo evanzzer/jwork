@@ -92,7 +92,8 @@ public class Location
     public String toString()
     {
         // Return Province
-        return "Province   : " + province + "\n" +
+        return "====== LOCATION ======\n" +
+            "Province   : " + province + "\n" +
             "City       : " + city + "\n" +
             "Description: " + description;
     }

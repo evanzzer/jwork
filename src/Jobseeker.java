@@ -187,7 +187,8 @@ public class Jobseeker
         SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
         String date = joinDate != null ? format.format(joinDate.getTime()) : "";
         // Return the info
-        return "ID      : " + id + "\n" +
+        return "====== JOBSEEKER ======\n" +
+            "ID      : " + id + "\n" +
             "Name    : " + name + "\n" +
             "email   : " + email + "\n" +
             "password: " + password + "\n" + 

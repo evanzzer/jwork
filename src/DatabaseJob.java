@@ -1,13 +1,77 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * A list of database about Jobs
  * 
  * @author Evans Hebert
- * @version 25 March 2021
+ * @version 22 April 2021
  */
 public class DatabaseJob
 {
-    private static String[] listJob;
-    
+    private static final ArrayList<Job> JOB_DATABASE = new ArrayList<>();
+    private static int lastId = 0;
+
+    /**
+     * Retrieve a list of job objects
+     * @return A list of job objects
+     */
+    public static ArrayList<Job> getJobDatabase()
+    {
+        // Get listRecruiter
+        return JOB_DATABASE;
+    }
+
+    /**
+     * Retrieve the last ID of the database
+     * @return Last ID in Integer
+     */
+    public static int getLastId()
+    {
+        return lastId;
+    }
+
+    /**
+     * Retrieve a specified job that can be found by ID
+     * @return A job object
+     */
+    public static Job getJobById(int id)
+    {
+        for (Job job : JOB_DATABASE) {
+            if (job.getId() == id) {
+                return job;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Retrieve a specific job that can be found by Recruiter's ID
+     * @return a job array
+     */
+    public static ArrayList<Job> getJobByRecruiter(int recruiterId)
+    {
+        List<Job> findJob = JOB_DATABASE
+                .stream()
+                .filter(job -> job.getRecruiter().getId() == recruiterId)
+                .collect(Collectors.toList());
+        return (findJob.size() != 0) ? new ArrayList<>(findJob) : null;
+    }
+
+    /**
+     * Retrieve a specific job that can be found by job category
+     * @return a job array
+     */
+    public static ArrayList<Job> getJobByCategory(JobCategory category)
+    {
+        List<Job> findJob = JOB_DATABASE
+                .stream()
+                .filter(job -> job.getCategory() == category)
+                .collect(Collectors.toList());
+        return (findJob.size() != 0) ? new ArrayList<>(findJob) : null;
+    }
+
     /**
      * Add a new job
      * @param job A job Object
@@ -15,38 +79,24 @@ public class DatabaseJob
      */
     public static boolean addJob(Job job)
     {
-        // Codes
-        return false;
+        JOB_DATABASE.add(job);
+        lastId = job.getId();
+        return true;
     }
     
     /**
      * Remove existing job
-     * @param job A job Object
+     * @param id A job's ID
      * @return State to indicate a job has been successfully removed
      */
-    public static boolean removeJob(Job job)
+    public static boolean removeJob(int id)
     {
-        // Codes
+        for (Job job : JOB_DATABASE) {
+            if (job.getId() == id) {
+                JOB_DATABASE.remove(job);
+                return true;
+            }
+        }
         return false;
-    }
-    
-    /**
-     * Retrieve a specified job
-     * @return A job object
-     */
-    public static Job getJob()
-    {
-        // Codes
-        return null;
-    }
-    
-    /**
-     * Retrieve a list of job currently available
-     * @return A list of jobs' name
-     */
-    public static String[] getListJob()
-    {
-        // Get listJob
-        return listJob;
     }
 }

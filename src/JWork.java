@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 /**
@@ -14,37 +15,25 @@ public class JWork
         Location location = new Location("Jakarta", "Jakarta Utara", "Tempat Lahir");
 
         // Recruiter
-        Recruiter recruiter = new Recruiter(1, "Evans Hebert", "evans.hebert@ui.ac.id", "081234567890", location);
-
-        // Job
-        Job job = new Job(1, "Asisten", recruiter, 100000, JobCategory.BackEnd);
-
-        // Bonus
-        Bonus bonus = new Bonus(1, "PBOASIK", 25000, 50000, true);
+        DatabaseRecruiter.addRecruiter(new Recruiter(DatabaseRecruiter.getLastId() + 1, "Evans Hebert", "evans.hebert@ui.ac.id", "081234567890", location));
 
         // Jobseeker
-        Jobseeker jobseeker1 = new Jobseeker(1, "Tono", "to..no@ui.ac.id", "plain", new GregorianCalendar(2021, 3, 8));
+        DatabaseJobseeker.addJobseeker(new Jobseeker(DatabaseJobseeker.getLastId() + 1, "Evans Hebert", "evans.hebert@ui.ac.id", "SuPreMe123", 2021, 3, 11));
+        DatabaseJobseeker.addJobseeker(new Jobseeker(DatabaseJobseeker.getLastId() + 1, "Evans Hebert", "evans.hebert@ui.ac.id", "PaSsWrD123", 2021, 3, 10));
+        DatabaseJobseeker.addJobseeker(new Jobseeker(DatabaseJobseeker.getLastId() + 1, "Indira Insiyah", "indira.insiyah@ui.ac.id", "SmAnGaT123", 2021, 3, 12));
 
-        EwalletPayment invoice1 = new EwalletPayment(1, job, jobseeker1, bonus, InvoiceStatus.Finished);
-        BankPayment invoice2 = new BankPayment(2, job, jobseeker1, InvoiceStatus.Finished);
-        
-        invoice1.setTotalFee();
-        invoice2.setTotalFee();
+        DatabaseJobseeker.getDatabaseJobseeker().forEach(jobseeker -> System.out.println(jobseeker.toString()));
 
-        System.out.println(invoice1.toString());
-        System.out.println(invoice2.toString());
+        // Job
+        DatabaseJob.addJob(new Job(DatabaseJob.getLastId() + 1, "Object Designer", DatabaseRecruiter.getRecruiterById(DatabaseRecruiter.getLastId()), 50000, JobCategory.UI));
+        DatabaseJob.addJob(new Job(DatabaseJob.getLastId() + 1, "Layout Designer", DatabaseRecruiter.getRecruiterById(DatabaseRecruiter.getLastId()), 75000, JobCategory.UI));
+        DatabaseJob.addJob(new Job(DatabaseJob.getLastId() + 1, "AWS BackEnd Developer", DatabaseRecruiter.getRecruiterById(DatabaseRecruiter.getLastId()), 90000, JobCategory.BackEnd));
 
-        // Case Study
-        // Jobseeker jobseeker2 = new Jobseeker(2, "Tono", "tono.bener@ui.ac.id", "KomPleks123", 2021, 3, 8); 
-        // Jobseeker jobseeker3 = new Jobseeker(3, "Tono", "terserah", "TeRsEr4h");
-
-        // System.out.println(jobseeker1.toString());
-        // System.out.println(jobseeker2.toString());
-        // System.out.println(jobseeker3.toString());
-
-        // jobseeker1.setEmail("email.yang.bener@do-main.com");
-        // jobseeker1.setPassword("PassBen4r");
-
-        // System.out.println(jobseeker1.toString());
+        ArrayList<Job> jobUI = DatabaseJob.getJobByCategory(JobCategory.UI);
+        if (jobUI != null) {
+            jobUI.forEach(job -> System.out.println(job.toString()));
+        } else {
+            System.out.println("No information for Category UI");
+        }
     }
 }
