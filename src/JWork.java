@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 
 /**
  * The main file of the package. Contains main().
