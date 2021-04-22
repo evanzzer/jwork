@@ -14,6 +14,7 @@ public class JWork
         // Location
         Location location = new Location("Jakarta", "Jakarta Utara", "Tempat Lahir");
 
+        // BOOLEAN OUTPUT CAN BE IGNORED IN THIS CASE! SO JUST ADDING OBJECTS WITHOUT CHECKING THE RESULT IS STILL VALID!
         // Recruiter
         DatabaseRecruiter.addRecruiter(new Recruiter(DatabaseRecruiter.getLastId() + 1, "Evans Hebert", "evans.hebert@ui.ac.id", "081234567890", location));
 
