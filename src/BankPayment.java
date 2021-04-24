@@ -62,7 +62,7 @@ public class BankPayment extends Invoice
      */
     public void setTotalFee()
     {
-        getJob().forEach(job -> totalFee += job.getFee());
+        getJobs().forEach(job -> totalFee += job.getFee());
         if (adminFee != 0) {
             totalFee -= adminFee;
         }
@@ -76,7 +76,7 @@ public class BankPayment extends Invoice
     public String toString()
     {
         SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
-        List<String> jobNames = getJob()
+        List<String> jobNames = getJobs()
                 .stream()
                 .map(Job::getName)
                 .collect(Collectors.toList());

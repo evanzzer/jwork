@@ -62,7 +62,7 @@ public class EwalletPayment extends Invoice
      */
     public void setTotalFee()
     {
-        getJob().forEach(job -> totalFee += job.getFee());
+        getJobs().forEach(job -> totalFee += job.getFee());
         if (bonus != null && bonus.getActive() && totalFee > bonus.getMinTotalFee()) {
             totalFee += bonus.getExtraFee();
         }
@@ -77,7 +77,7 @@ public class EwalletPayment extends Invoice
     {
         // Print out the information of an invoice
         SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
-        List<String> jobNames = getJob()
+        List<String> jobNames = getJobs()
                 .stream()
                 .map(Job::getName)
                 .collect(Collectors.toList());

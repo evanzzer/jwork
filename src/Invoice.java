@@ -45,7 +45,7 @@ abstract class Invoice
      * Retrieve Invoice Job
      * @return Invoice Job
      */
-    public ArrayList<Job> getJob()
+    public ArrayList<Job> getJobs()
     {
         // Get ID Job
         return jobs;
@@ -112,7 +112,7 @@ abstract class Invoice
      * Set the Job of an Invoice
      * @param jobs Job of an Invoice
      */
-    public void setJob(ArrayList<Job> jobs)
+    public void setJobs(ArrayList<Job> jobs)
     {
         // Set Jobs
         this.jobs = jobs;
