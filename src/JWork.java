@@ -55,9 +55,11 @@ public class JWork
         DatabaseBonus.getBonusDatabase().forEach(bonus -> System.out.println(bonus.toString()));
 
         // Invoice
-        Invoice invoice1 = new BankPayment(DatabaseInvoice.getLastId() + 1, DatabaseJob.getJobByCategory(JobCategory.UI), DatabaseJobseeker.getJobseekerById(1));
-        Invoice invoice2 = new BankPayment(DatabaseInvoice.getLastId() + 1, DatabaseJob.getJobByCategory(JobCategory.BackEnd), DatabaseJobseeker.getJobseekerById(1), 50000);
-        Invoice invoice3 = new EwalletPayment(DatabaseInvoice.getLastId() + 1, DatabaseJob.getJobByCategory(JobCategory.BackEnd), DatabaseJobseeker.getJobseekerById(1), DatabaseBonus.getBonusById(1));
+        Invoice invoice1 = new BankPayment(1, DatabaseJob.getJobByCategory(JobCategory.UI), DatabaseJobseeker.getJobseekerById(1));
+        invoice1.setInvoiceStatus(InvoiceStatus.Finished);
+        Invoice invoice2 = new BankPayment(2, DatabaseJob.getJobByCategory(JobCategory.BackEnd), DatabaseJobseeker.getJobseekerById(1), 50000);
+        invoice2.setInvoiceStatus(InvoiceStatus.Finished);
+        Invoice invoice3 = new EwalletPayment(3, DatabaseJob.getJobByCategory(JobCategory.BackEnd), DatabaseJobseeker.getJobseekerById(1), DatabaseBonus.getBonusById(1));
         DatabaseInvoice.addInvoice(invoice1);
         DatabaseInvoice.addInvoice(invoice2);
         DatabaseInvoice.addInvoice(invoice3);
