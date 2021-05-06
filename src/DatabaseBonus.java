@@ -4,7 +4,7 @@ import java.util.ArrayList;
  * A list of database about Bonus
  * 
  * @author Evans Hebert
- * @version 22 April 2021
+ * @version 06 May 2021
  */
 public class DatabaseBonus
 {
@@ -35,12 +35,17 @@ public class DatabaseBonus
      */
     public static Bonus getBonusById(int id)
     {
-        for (Bonus bonus : BONUS_DATABASE) {
-            if (bonus.getId() == id) {
-                return bonus;
+        try {
+            for (Bonus bonus : BONUS_DATABASE) {
+                if (bonus.getId() == id) {
+                    return bonus;
+                }
             }
+            throw new BonusNotFoundException(id);
+        } catch (BonusNotFoundException e) {
+            System.out.println(e.getMessage());
+            return null;
         }
-        return null;
     }
 
     public static Bonus getBonusByReferralCode(String referralCode)
@@ -60,14 +65,19 @@ public class DatabaseBonus
      */
     public static boolean addBonus(Bonus bonus)
     {
-        for (Bonus existBonus : BONUS_DATABASE) {
-            if (bonus.getReferralCode().equals(existBonus.getReferralCode())) {
-                return false;
+        try {
+            for (Bonus existBonus : BONUS_DATABASE) {
+                if (bonus.getReferralCode().equals(existBonus.getReferralCode())) {
+                    throw new ReferralCodeAlreadyExistsException(bonus);
+                }
             }
+            BONUS_DATABASE.add(bonus);
+            lastId = bonus.getId();
+            return true;
+        } catch (ReferralCodeAlreadyExistsException e) {
+            System.out.println(e.getMessage());
+            return false;
         }
-        BONUS_DATABASE.add(bonus);
-        lastId = bonus.getId();
-        return true;
     }
 
     /**
@@ -109,12 +119,17 @@ public class DatabaseBonus
      */
     public static boolean removeBonus(int id)
     {
-        for (Bonus bonus : BONUS_DATABASE) {
-            if (bonus.getId() == id) {
-                BONUS_DATABASE.remove(bonus);
-                return true;
+        try {
+            for (Bonus bonus : BONUS_DATABASE) {
+                if (bonus.getId() == id) {
+                    BONUS_DATABASE.remove(bonus);
+                    return true;
+                }
             }
+            throw new BonusNotFoundException(id);
+        } catch (BonusNotFoundException e) {
+            System.out.println(e.getMessage());
+            return false;
         }
-        return false;
     }
 }

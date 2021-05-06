@@ -4,7 +4,7 @@ import java.util.ArrayList;
  * A list of database about Recruiter
  * 
  * @author Evans Hebert
- * @version 22 April 2021
+ * @version 06 May 2021
  */
 public class DatabaseRecruiter
 {
@@ -36,12 +36,17 @@ public class DatabaseRecruiter
      */
     public static Recruiter getRecruiterById(int id)
     {
-        for (Recruiter recruiter : RECRUITER_DATABASE) {
-            if (recruiter.getId() == id) {
-                return recruiter;
+        try {
+            for (Recruiter recruiter : RECRUITER_DATABASE) {
+                if (recruiter.getId() == id) {
+                    return recruiter;
+                }
             }
+            throw new RecruiterNotFoundException(id);
+        } catch (RecruiterNotFoundException e) {
+            System.out.println(e.getMessage());
+            return null;
         }
-        return null;
     }
     
     /**
@@ -63,12 +68,17 @@ public class DatabaseRecruiter
      */
     public static boolean removeRecruiter(int id)
     {
-        for (Recruiter recruiter : RECRUITER_DATABASE) {
-            if (recruiter.getId() == id) {
-                RECRUITER_DATABASE.remove(recruiter);
-                return true;
+        try {
+            for (Recruiter recruiter : RECRUITER_DATABASE) {
+                if (recruiter.getId() == id) {
+                    RECRUITER_DATABASE.remove(recruiter);
+                    return true;
+                }
             }
+            throw new RecruiterNotFoundException(id);
+        } catch (RecruiterNotFoundException e) {
+            System.out.println(e.getMessage());
+            return false;
         }
-        return false;
     }
 }

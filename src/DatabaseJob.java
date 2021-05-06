@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
  * A list of database about Jobs
  * 
  * @author Evans Hebert
- * @version 22 April 2021
+ * @version 06 May 2021
  */
 public class DatabaseJob
 {
@@ -38,12 +38,17 @@ public class DatabaseJob
      */
     public static Job getJobById(int id)
     {
-        for (Job job : JOB_DATABASE) {
-            if (job.getId() == id) {
-                return job;
+        try {
+            for (Job job : JOB_DATABASE) {
+                if (job.getId() == id) {
+                    return job;
+                }
             }
+            throw new JobNotFoundException(id);
+        } catch (JobNotFoundException e) {
+            System.out.println(e.getMessage());
+            return null;
         }
-        return null;
     }
 
     /**
@@ -91,12 +96,17 @@ public class DatabaseJob
      */
     public static boolean removeJob(int id)
     {
-        for (Job job : JOB_DATABASE) {
-            if (job.getId() == id) {
-                JOB_DATABASE.remove(job);
-                return true;
+        try {
+            for (Job job : JOB_DATABASE) {
+                if (job.getId() == id) {
+                    JOB_DATABASE.remove(job);
+                    return true;
+                }
             }
+            throw new JobNotFoundException(id);
+        } catch (JobNotFoundException e) {
+            System.out.println(e.getMessage());
+            return false;
         }
-        return false;
     }
 }
