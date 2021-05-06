@@ -1,3 +1,9 @@
+/**
+ * Fee Calculator - MultiThreading
+ *
+ * @author Evans Hebert
+ * @version 06 May 2021
+ */
 public class FeeCalculator implements Runnable
 {
     private final Invoice invoice;
