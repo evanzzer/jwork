@@ -84,7 +84,7 @@ public class BankPayment extends Invoice
         // Print out the information of an invoice
         return "======== INVOICE ========\n" +
             "ID       : " + getId() + "\n" +
-            "Job Name : " + String.join(",", jobNames) + "\n" +
+            "Job Name : " + String.join(", ", jobNames) + "\n" +
             "Date     : " + format.format(getDate().getTime()) + "\n" +
             "Jobseeker: " + getJobseeker().getName() + "\n" +
             "Payment  : " + getPaymentType().toString() + "\n" +

@@ -84,7 +84,7 @@ public class EwalletPayment extends Invoice
 
         return "======== INVOICE ========\n" +
             "ID       : " + getId() + "\n" +
-            "Job Name : " + String.join(",", jobNames) + "\n" +
+            "Job Name : " + String.join(", ", jobNames) + "\n" +
             "Date     : " + format.format(getDate().getTime()) + "\n" +
             "Jobseeker: " + getJobseeker().getName() + "\n" +
             "Payment  : " + getPaymentType().toString() + "\n" +
