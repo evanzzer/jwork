@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
  * A list of database about Invoices
  *
  * @author Evans Hebert
- * @version 24 April 2021
+ * @version 08 May 2021
  */
 public class DatabaseInvoice
 {
@@ -38,12 +38,17 @@ public class DatabaseInvoice
      */
     public static Invoice getInvoiceById(int id)
     {
-        for (Invoice invoice : INVOICE_DATABASE) {
-            if (invoice.getId() == id) {
-                return invoice;
+        try {
+            for (Invoice invoice : INVOICE_DATABASE) {
+                if (invoice.getId() == id) {
+                    return invoice;
+                }
             }
+            throw new InvoiceNotFoundException(id);
+        } catch (InvoiceNotFoundException e) {
+            System.out.println(e.getMessage());
+            return null;
         }
-        return null;
     }
 
     /**
@@ -67,14 +72,20 @@ public class DatabaseInvoice
      */
     public static boolean addInvoice(Invoice invoice)
     {
-        for (Invoice existInvoice : INVOICE_DATABASE) {
-            if (existInvoice.getJobseeker() == invoice.getJobseeker() && existInvoice.getInvoiceStatus() == InvoiceStatus.Ongoing) {
-                return false;
+        try {
+            for (Invoice existInvoice : INVOICE_DATABASE) {
+                if ((existInvoice.getJobseeker() == invoice.getJobseeker() && existInvoice.getInvoiceStatus() == InvoiceStatus.Ongoing)
+                     || (existInvoice.getId() == invoice.getId() && existInvoice.getInvoiceStatus() == InvoiceStatus.Ongoing)) {
+                    throw new OngoingInvoiceAlreadyExistsException(existInvoice);
+                }
             }
+            INVOICE_DATABASE.add(invoice);
+            lastId = invoice.getId();
+            return true;
+        } catch (OngoingInvoiceAlreadyExistsException e) {
+            System.out.println(e.getMessage());
+            return false;
         }
-        INVOICE_DATABASE.add(invoice);
-        lastId = invoice.getId();
-        return true;
     }
 
     /**
@@ -101,12 +112,17 @@ public class DatabaseInvoice
      */
     public static boolean removeInvoice(int id)
     {
-        for (Invoice invoice : INVOICE_DATABASE) {
-            if (invoice.getId() == id) {
-                INVOICE_DATABASE.remove(invoice);
-                return true;
+        try {
+            for (Invoice invoice : INVOICE_DATABASE) {
+                if (invoice.getId() == id) {
+                    INVOICE_DATABASE.remove(invoice);
+                    return true;
+                }
             }
+            throw new InvoiceNotFoundException(id);
+        } catch (InvoiceNotFoundException e) {
+            System.out.println(e.getMessage());
+            return false;
         }
-        return false;
     }
 }
