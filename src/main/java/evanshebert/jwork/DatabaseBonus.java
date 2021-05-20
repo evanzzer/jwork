@@ -65,21 +65,16 @@ public class DatabaseBonus
      * @param bonus A bonus Object
      * @return State to indicate a bonus has been successfully added
      */
-    public static boolean addBonus(Bonus bonus)
+    public static boolean addBonus(Bonus bonus) throws ReferralCodeAlreadyExistsException
     {
-        try {
-            for (Bonus existBonus : BONUS_DATABASE) {
-                if (bonus.getReferralCode().equals(existBonus.getReferralCode())) {
-                    throw new ReferralCodeAlreadyExistsException(bonus);
-                }
+        for (Bonus existBonus : BONUS_DATABASE) {
+            if (bonus.getReferralCode().equals(existBonus.getReferralCode())) {
+                throw new ReferralCodeAlreadyExistsException(bonus);
             }
-            BONUS_DATABASE.add(bonus);
-            lastId = bonus.getId();
-            return true;
-        } catch (ReferralCodeAlreadyExistsException e) {
-            System.out.println(e.getMessage());
-            return false;
         }
+        BONUS_DATABASE.add(bonus);
+        lastId = bonus.getId();
+        return true;
     }
 
     /**

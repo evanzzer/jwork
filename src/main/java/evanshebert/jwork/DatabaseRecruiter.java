@@ -36,19 +36,14 @@ public class DatabaseRecruiter
      * Retrieve a specified recruiter that can be found by ID
      * @return A recruiter object
      */
-    public static Recruiter getRecruiterById(int id)
+    public static Recruiter getRecruiterById(int id) throws RecruiterNotFoundException
     {
-        try {
-            for (Recruiter recruiter : RECRUITER_DATABASE) {
-                if (recruiter.getId() == id) {
-                    return recruiter;
-                }
+        for (Recruiter recruiter : RECRUITER_DATABASE) {
+            if (recruiter.getId() == id) {
+                return recruiter;
             }
-            throw new RecruiterNotFoundException(id);
-        } catch (RecruiterNotFoundException e) {
-            System.out.println(e.getMessage());
-            return null;
         }
+        throw new RecruiterNotFoundException(id);
     }
     
     /**

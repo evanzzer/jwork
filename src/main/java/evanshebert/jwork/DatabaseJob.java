@@ -38,19 +38,14 @@ public class DatabaseJob
      * Retrieve a specified job that can be found by ID
      * @return A job object
      */
-    public static Job getJobById(int id)
+    public static Job getJobById(int id) throws JobNotFoundException
     {
-        try {
-            for (Job job : JOB_DATABASE) {
-                if (job.getId() == id) {
-                    return job;
-                }
+        for (Job job : JOB_DATABASE) {
+            if (job.getId() == id) {
+                return job;
             }
-            throw new JobNotFoundException(id);
-        } catch (JobNotFoundException e) {
-            System.out.println(e.getMessage());
-            return null;
         }
+        throw new JobNotFoundException(id);
     }
 
     /**

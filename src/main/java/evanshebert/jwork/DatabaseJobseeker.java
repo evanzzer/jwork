@@ -46,6 +46,22 @@ public class DatabaseJobseeker
     }
 
     /**
+     * Retrieve a login with a specified email and password
+     * @param email Jobseeker's email
+     * @param password Jobseeker's password
+     * @return Jobseeker if exist, else null
+     */
+    public static Jobseeker jobseekerLogin(String email, String password)
+    {
+        for (Jobseeker jobseeker : JOBSEEKER_DATABASE) {
+            if (jobseeker.getEmail().equals(email) && jobseeker.getPassword().equals(password)) {
+                return jobseeker;
+            }
+        }
+        return null;
+    }
+
+    /**
      * Add a new jobseeker
      * @param jobseeker A jobseeker Object
      * @return State to indicate a jobseeker has been successfully added
