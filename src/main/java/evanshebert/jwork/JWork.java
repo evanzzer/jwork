@@ -55,6 +55,14 @@ public class JWork {
             System.out.println(e.getMessage());
         }
 
+        // Jobseeker
+        try {
+            if (!DatabaseJobseeker.addJobseeker(new Jobseeker(DatabaseJobseeker.getLastId() + 1, "Agen", "agen@email.com", "AgENT123")))
+                System.out.println("Error adding jobseeker!");
+        } catch (EmailAlreadyExistsException e) {
+            System.out.println(e.getMessage());
+        }
+
         SpringApplication.run(JWork.class, args);
     }
 }
