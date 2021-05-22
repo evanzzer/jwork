@@ -10,7 +10,7 @@ import java.util.GregorianCalendar;
  * @author Evans Hebert
  * @version 22 April 2021
  */
-abstract class Invoice
+public abstract class Invoice
 {
     private int id;
     private ArrayList<Job> jobs;

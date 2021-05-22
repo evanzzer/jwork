@@ -38,19 +38,14 @@ public class DatabaseInvoice
      * Retrieve a specified invoice that can be found by ID
      * @return An invoice object
      */
-    public static Invoice getInvoiceById(int id)
+    public static Invoice getInvoiceById(int id) throws InvoiceNotFoundException
     {
-        try {
-            for (Invoice invoice : INVOICE_DATABASE) {
-                if (invoice.getId() == id) {
-                    return invoice;
-                }
+        for (Invoice invoice : INVOICE_DATABASE) {
+            if (invoice.getId() == id) {
+                return invoice;
             }
-            throw new InvoiceNotFoundException(id);
-        } catch (InvoiceNotFoundException e) {
-            System.out.println(e.getMessage());
-            return null;
         }
+        throw new InvoiceNotFoundException(id);
     }
 
     /**
@@ -112,19 +107,14 @@ public class DatabaseInvoice
      * @param id An invoice's ID
      * @return State to indicate an invoice has been successfully removed
      */
-    public static boolean removeInvoice(int id)
+    public static boolean removeInvoice(int id) throws InvoiceNotFoundException
     {
-        try {
-            for (Invoice invoice : INVOICE_DATABASE) {
-                if (invoice.getId() == id) {
-                    INVOICE_DATABASE.remove(invoice);
-                    return true;
-                }
+        for (Invoice invoice : INVOICE_DATABASE) {
+            if (invoice.getId() == id) {
+                INVOICE_DATABASE.remove(invoice);
+                return true;
             }
-            throw new InvoiceNotFoundException(id);
-        } catch (InvoiceNotFoundException e) {
-            System.out.println(e.getMessage());
-            return false;
         }
+        throw new InvoiceNotFoundException(id);
     }
 }
