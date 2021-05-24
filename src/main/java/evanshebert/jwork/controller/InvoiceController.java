@@ -26,14 +26,14 @@ public class InvoiceController
         }
     }
 
-    @RequestMapping("/{jobseekerId}")
+    @RequestMapping("/jobseeker/{jobseekerId}")
     public ArrayList<Invoice> getInvoiceByJobseekerId(@PathVariable int jobseekerId)
     {
         return DatabaseInvoice.getInvoiceByJobseeker(jobseekerId);
     }
 
     @RequestMapping(value = "/invoiceStatus/{id}", method = RequestMethod.PUT)
-    public Invoice changeInvoiceStatus(@RequestParam(value = "id") int id,
+    public Invoice changeInvoiceStatus(@PathVariable int id,
                                        @RequestParam(value = "status") InvoiceStatus status)
     {
         boolean state = DatabaseInvoice.changeInvoiceStatus(id, status);
@@ -84,14 +84,14 @@ public class InvoiceController
     @RequestMapping(value = "/createEWalletPayment", method = RequestMethod.POST)
     public Invoice addBankPayment(@RequestParam(value = "jobIdList") ArrayList<Integer> jobIdList,
                                   @RequestParam(value = "jobseekerId") int jobseekerId,
-                                  @RequestParam(value = "bonus") String bonus)
+                                  @RequestParam(value = "referralCode") String referralCode)
     {
         try {
             ArrayList<Job> job = new ArrayList<>();
             for (int id : jobIdList) {
                 job.add(DatabaseJob.getJobById(id));
             }
-            Invoice invoice = new EwalletPayment(DatabaseInvoice.getLastId() + 1, job, DatabaseJobseeker.getJobseekerById(jobseekerId), DatabaseBonus.getBonusByReferralCode(bonus));
+            Invoice invoice = new EwalletPayment(DatabaseInvoice.getLastId() + 1, job, DatabaseJobseeker.getJobseekerById(jobseekerId), DatabaseBonus.getBonusByReferralCode(referralCode));
             invoice.setTotalFee();
             boolean state = DatabaseInvoice.addInvoice(invoice);
             return state ? invoice : null;
