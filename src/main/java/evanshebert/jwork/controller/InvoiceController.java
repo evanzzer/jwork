@@ -91,7 +91,13 @@ public class InvoiceController
             for (int id : jobIdList) {
                 job.add(DatabaseJob.getJobById(id));
             }
-            Invoice invoice = new EwalletPayment(DatabaseInvoice.getLastId() + 1, job, DatabaseJobseeker.getJobseekerById(jobseekerId), DatabaseBonus.getBonusByReferralCode(referralCode));
+
+            Invoice invoice;
+            if (referralCode != null && !referralCode.isBlank()) {
+                invoice = new EwalletPayment(DatabaseInvoice.getLastId() + 1, job, DatabaseJobseeker.getJobseekerById(jobseekerId), DatabaseBonus.getBonusByReferralCode(referralCode));
+            } else {
+                invoice = new EwalletPayment(DatabaseInvoice.getLastId() + 1, job, DatabaseJobseeker.getJobseekerById(jobseekerId));
+            }
             invoice.setTotalFee();
             boolean state = DatabaseInvoice.addInvoice(invoice);
             return state ? invoice : null;
