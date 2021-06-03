@@ -165,16 +165,18 @@ public class DatabaseJobseekerPostgre {
      * @param id A jobseeker's ID
      * @return State to indicate a jobseeker has been successfully removed
      */
-    public static boolean removeJobseeker(int id) throws JobseekerNotFoundException {
-        try {
-            getJobseekerById(id);
-            DatabaseConnectionPostgre.connection()
-                    .createStatement()
-                    .executeUpdate("DELETE FROM jobseeker WHERE id = " + id);
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
+    public static boolean deleteJobseeker(int id) throws JobseekerNotFoundException {
+        Jobseeker jobseeker = getJobseekerById(id);
+        if (jobseeker != null) {
+            try {
+                DatabaseConnectionPostgre.connection()
+                        .createStatement()
+                        .executeUpdate("DELETE FROM jobseeker WHERE id = " + id);
+                return true;
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
+            }
+        } else throw new JobseekerNotFoundException(id);
     }
 }

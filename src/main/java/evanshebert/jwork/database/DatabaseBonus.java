@@ -2,135 +2,91 @@ package evanshebert.jwork.database;
 
 import java.util.ArrayList;
 
+import evanshebert.jwork.database.postgres.DatabaseBonusPostgre;
 import evanshebert.jwork.exceptions.BonusNotFoundException;
 import evanshebert.jwork.exceptions.ReferralCodeAlreadyExistsException;
 import evanshebert.jwork.objects.Bonus;
 
 /**
  * A list of database about Bonus
- * 
+ *
  * @author Evans Hebert
- * @version 06 May 2021
+ * @version 03 June 2021
  */
-public class DatabaseBonus
-{
-    private static final ArrayList<Bonus> BONUS_DATABASE = new ArrayList<>();
-    private static int lastId = 0;
-
+public class DatabaseBonus {
     /**
      * Retrieve a list of bonus currently available
+     *
      * @return A list of bonus
      */
-    public static ArrayList<Bonus> getBonusDatabase()
-    {
-        return BONUS_DATABASE;
+    public static ArrayList<Bonus> getBonusDatabase() {
+        return DatabaseBonusPostgre.getBonusDatabase();
     }
 
     /**
      * Retrieve the last ID of the database
+     *
      * @return Last ID in Integer
      */
-    public static int getLastId()
-    {
-        return lastId;
+    public static int getLastId() {
+        return DatabaseBonusPostgre.getLastBonusId();
     }
 
     /**
      * Retrieve a specified bonus by it's ID
+     *
      * @return A bonus object
      */
-    public static Bonus getBonusById(int id)
-    {
-        try {
-            for (Bonus bonus : BONUS_DATABASE) {
-                if (bonus.getId() == id) {
-                    return bonus;
-                }
-            }
-            throw new BonusNotFoundException(id);
-        } catch (BonusNotFoundException e) {
-            System.out.println(e.getMessage());
-            return null;
-        }
+    public static Bonus getBonusById(int id) throws BonusNotFoundException {
+        return DatabaseBonusPostgre.getBonusById(id);
     }
 
-    public static Bonus getBonusByReferralCode(String referralCode)
-    {
-        for (Bonus bonus : BONUS_DATABASE) {
-            if (bonus.getReferralCode().equals(referralCode)) {
-                return bonus;
-            }
-        }
-        return null;
+    /**
+     * Retrieve a specified bonus by it's code
+     *
+     * @return A bonus object
+     */
+    public static Bonus getBonusByReferralCode(String referralCode) throws BonusNotFoundException {
+        return DatabaseBonusPostgre.getBonusByReferralCode(referralCode);
     }
 
     /**
      * Add a new bonus
+     *
      * @param bonus A bonus Object
      * @return State to indicate a bonus has been successfully added
      */
-    public static boolean addBonus(Bonus bonus) throws ReferralCodeAlreadyExistsException
-    {
-        for (Bonus existBonus : BONUS_DATABASE) {
-            if (bonus.getReferralCode().equals(existBonus.getReferralCode())) {
-                throw new ReferralCodeAlreadyExistsException(bonus);
-            }
-        }
-        BONUS_DATABASE.add(bonus);
-        lastId = bonus.getId();
-        return true;
+    public static boolean addBonus(Bonus bonus) throws ReferralCodeAlreadyExistsException {
+        return DatabaseBonusPostgre.insertBonus(bonus);
     }
 
     /**
      * Activate a specified bonus by ID
+     *
      * @param id A bonus ID
      * @return State to indicate a bonus has been activated successfully
      */
-    public static boolean activateBonus(int id)
-    {
-        for (Bonus bonus : BONUS_DATABASE) {
-            if (bonus.getId() == id) {
-                bonus.setActive(true);
-                return true;
-            }
-        }
-        return false;
+    public static boolean activateBonus(int id) throws BonusNotFoundException {
+        return DatabaseBonusPostgre.activateBonus(id);
     }
 
     /**
      * Deactivate a specified bonus by ID
+     *
      * @param id A bonus ID
      * @return State to indicate a bonus has been deactivated successfully
      */
-    public static boolean deactivateBonus(int id)
-    {
-        for (Bonus bonus : BONUS_DATABASE) {
-            if (bonus.getId() == id) {
-                bonus.setActive(false);
-                return true;
-            }
-        }
-        return false;
+    public static boolean deactivateBonus(int id) throws BonusNotFoundException {
+        return DatabaseBonusPostgre.deactivateBonus(id);
     }
-    
+
     /**
      * Remove existing bonus
+     *
      * @param id A Bonus's ID
      * @return State to indicate a bonus has been successfully removed
      */
-    public static boolean removeBonus(int id)
-    {
-        try {
-            for (Bonus bonus : BONUS_DATABASE) {
-                if (bonus.getId() == id) {
-                    BONUS_DATABASE.remove(bonus);
-                    return true;
-                }
-            }
-            throw new BonusNotFoundException(id);
-        } catch (BonusNotFoundException e) {
-            System.out.println(e.getMessage());
-            return false;
-        }
+    public static boolean removeBonus(int id) throws BonusNotFoundException {
+        return DatabaseBonusPostgre.deleteBonus(id);
     }
 }

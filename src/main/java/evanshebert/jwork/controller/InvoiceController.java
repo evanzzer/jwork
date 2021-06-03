@@ -5,6 +5,7 @@ import evanshebert.jwork.database.DatabaseInvoice;
 import evanshebert.jwork.database.DatabaseJob;
 import evanshebert.jwork.database.DatabaseJobseeker;
 import evanshebert.jwork.enums.InvoiceStatus;
+import evanshebert.jwork.exceptions.BonusNotFoundException;
 import evanshebert.jwork.exceptions.InvoiceNotFoundException;
 import evanshebert.jwork.exceptions.JobNotFoundException;
 import evanshebert.jwork.exceptions.JobseekerNotFoundException;
@@ -117,6 +118,9 @@ public class InvoiceController
             e.getMessage();
             return null;
         } catch (JobseekerNotFoundException e) {
+            e.getMessage();
+            return null;
+        } catch (BonusNotFoundException e) {
             e.getMessage();
             return null;
         }

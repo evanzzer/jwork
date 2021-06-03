@@ -11,7 +11,7 @@ import evanshebert.jwork.objects.Jobseeker;
  * A list of database about Jobseeker
  *
  * @author Evans Hebert
- * @version 06 May 2021
+ * @version 03 June 2021
  */
 public class DatabaseJobseeker {
     /**
@@ -69,6 +69,6 @@ public class DatabaseJobseeker {
      * @return State to indicate a jobseeker has been successfully removed
      */
     public static boolean removeJobseeker(int id) throws JobseekerNotFoundException {
-        return DatabaseJobseekerPostgre.removeJobseeker(id);
+        return DatabaseJobseekerPostgre.deleteJobseeker(id);
     }
 }

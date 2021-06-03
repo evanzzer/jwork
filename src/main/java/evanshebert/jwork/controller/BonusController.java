@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 
+import evanshebert.jwork.exceptions.BonusNotFoundException;
 import evanshebert.jwork.objects.Bonus;
 import evanshebert.jwork.database.DatabaseBonus;
 import evanshebert.jwork.exceptions.ReferralCodeAlreadyExistsException;
@@ -26,7 +27,12 @@ public class BonusController
     @RequestMapping("/{referralCode}")
     public Bonus getBonusByReferralCode(@PathVariable String referralCode)
     {
-        return DatabaseBonus.getBonusByReferralCode(referralCode);
+        try {
+            return DatabaseBonus.getBonusByReferralCode(referralCode);
+        } catch (BonusNotFoundException e) {
+            e.getMessage();
+            return null;
+        }
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
