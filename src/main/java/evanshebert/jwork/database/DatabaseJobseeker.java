@@ -2,7 +2,7 @@ package evanshebert.jwork.database;
 
 import java.util.ArrayList;
 
-import evanshebert.jwork.database.postgres.DatabaseJobseekerPostgre;
+import evanshebert.jwork.database.postgre.DatabaseJobseekerPostgre;
 import evanshebert.jwork.exceptions.EmailAlreadyExistsException;
 import evanshebert.jwork.exceptions.JobseekerNotFoundException;
 import evanshebert.jwork.objects.Jobseeker;

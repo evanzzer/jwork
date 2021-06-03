@@ -2,7 +2,7 @@ package evanshebert.jwork.database;
 
 import java.util.ArrayList;
 
-import evanshebert.jwork.database.postgres.DatabaseBonusPostgre;
+import evanshebert.jwork.database.postgre.DatabaseBonusPostgre;
 import evanshebert.jwork.exceptions.BonusNotFoundException;
 import evanshebert.jwork.exceptions.ReferralCodeAlreadyExistsException;
 import evanshebert.jwork.objects.Bonus;

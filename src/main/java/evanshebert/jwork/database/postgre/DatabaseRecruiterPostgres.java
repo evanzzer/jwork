@@ -1,4 +1,4 @@
-package evanshebert.jwork.database.postgres;
+package evanshebert.jwork.database.postgre;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

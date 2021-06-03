@@ -2,7 +2,7 @@ package evanshebert.jwork.database;
 
 import java.util.ArrayList;
 
-import evanshebert.jwork.database.postgres.DatabaseRecruiterPostgres;
+import evanshebert.jwork.database.postgre.DatabaseRecruiterPostgres;
 import evanshebert.jwork.exceptions.RecruiterNotFoundException;
 import evanshebert.jwork.objects.Recruiter;
 
