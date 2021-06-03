@@ -54,7 +54,7 @@ public class Jobseeker
         setEmail(email);
         setPassword(password);
         
-        // joinDate = Calendar.getInstance();
+        joinDate = Calendar.getInstance();
     }
     
     // Getter
