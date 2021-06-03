@@ -1,4 +1,4 @@
-package evanshebert.jwork;
+package evanshebert.jwork.objects;
 
 /**
  * Information about a recruiter.

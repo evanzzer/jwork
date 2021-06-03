@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import evanshebert.jwork.DatabaseJobseeker;
-import evanshebert.jwork.EmailAlreadyExistsException;
-import evanshebert.jwork.Jobseeker;
-import evanshebert.jwork.JobseekerNotFoundException;
+import evanshebert.jwork.database.DatabaseJobseeker;
+import evanshebert.jwork.exceptions.EmailAlreadyExistsException;
+import evanshebert.jwork.objects.Jobseeker;
+import evanshebert.jwork.exceptions.JobseekerNotFoundException;
 
 @RequestMapping("/jobseeker")
 @RestController

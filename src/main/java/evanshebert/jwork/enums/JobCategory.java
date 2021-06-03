@@ -1,4 +1,4 @@
-package evanshebert.jwork;
+package evanshebert.jwork.enums;
 
 /**
  * Enumeration of Job Category

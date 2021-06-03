@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 
-import evanshebert.jwork.DatabaseRecruiter;
-import evanshebert.jwork.Location;
-import evanshebert.jwork.Recruiter;
-import evanshebert.jwork.RecruiterNotFoundException;
+import evanshebert.jwork.database.DatabaseRecruiter;
+import evanshebert.jwork.objects.Location;
+import evanshebert.jwork.objects.Recruiter;
+import evanshebert.jwork.exceptions.RecruiterNotFoundException;
 
 @RequestMapping("/recruiter")
 @RestController

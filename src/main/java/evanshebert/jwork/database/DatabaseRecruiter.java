@@ -1,6 +1,9 @@
-package evanshebert.jwork;
+package evanshebert.jwork.database;
 
 import java.util.ArrayList;
+
+import evanshebert.jwork.exceptions.RecruiterNotFoundException;
+import evanshebert.jwork.objects.Recruiter;
 
 /**
  * A list of database about Recruiter

@@ -1,5 +1,7 @@
 package evanshebert.jwork;
 
+import evanshebert.jwork.objects.Invoice;
+
 /**
  * Fee Calculator - MultiThreading
  *

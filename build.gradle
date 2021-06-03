@@ -13,6 +13,7 @@ repositories {
 }
 
 dependencies {
+	implementation files('libs/postgresql-42.2.20.jar')
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

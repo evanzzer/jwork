@@ -1,4 +1,4 @@
-package evanshebert.jwork;
+package evanshebert.jwork.objects;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -6,28 +6,30 @@ import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
+import evanshebert.jwork.enums.PaymentType;
+
 /**
- * Details about bank payment.
+ * Details about e-wallet payment.
  * 
  * @author Evans Hebert
  * @version 22 April 2021
  */
-public class BankPayment extends Invoice
+public class EwalletPayment extends Invoice
 {
-    private static final PaymentType PAYMENT_TYPE = PaymentType.BankPayment;
-    private int adminFee;
+    private static final PaymentType PAYMENT_TYPE = PaymentType.EwalletPayment;
+    private Bonus bonus;
     
     // Constructor
-    public BankPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker)
+    public EwalletPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker)
     {
         super(id, jobs, jobseeker);
     }
     
     // Another Constructor
-    public BankPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker, int adminFee)
+    public EwalletPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker, Bonus bonus)
     {
         super(id, jobs, jobseeker);
-        this.adminFee = adminFee;
+        this.bonus = bonus;
     }
     
     // Getter
@@ -41,21 +43,21 @@ public class BankPayment extends Invoice
     }
     
     /**
-     * Retrieve Admin Fee of an invoice
-     * @return Admin Fee of the Invoice
+     * Retrieve Bonus of an invoice
+     * @return Bonus of the Invoice
      */
-    public int getAdminFee()
+    public Bonus getBonus()
     {
-        return adminFee;
+        return bonus;
     }
     
     /**
-     * Set Admin Fee of an invoice
-     * @param adminFee The admin fee to be set to an invoice
+     * Set Bonus of an invoice
+     * @param bonus The bonus to be set to an invoice
      */
-    public void setAdminFee(int adminFee)
+    public void setBonus(Bonus bonus)
     {
-        this.adminFee = adminFee;
+        this.bonus = bonus;
     }
     
     /**
@@ -65,25 +67,25 @@ public class BankPayment extends Invoice
     public void setTotalFee()
     {
         getJobs().forEach(job -> totalFee += job.getFee());
-        if (adminFee != 0) {
-            totalFee -= adminFee;
+        if (bonus != null && bonus.getActive() && totalFee > bonus.getMinTotalFee()) {
+            totalFee += bonus.getExtraFee();
         }
     }
     
     /**
      * Abstract Method from Invoice
-     * Return out the information of the invoice
+     * Return information of the invoice
      * @return Information of the Invoice
      */
     public String toString()
     {
+        // Print out the information of an invoice
         SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
         List<String> jobNames = getJobs()
                 .stream()
                 .map(Job::getName)
                 .collect(Collectors.toList());
-        
-        // Print out the information of an invoice
+
         return "======== INVOICE ========\n" +
             "ID       : " + getId() + "\n" +
             "Job Name : " + String.join(", ", jobNames) + "\n" +
@@ -91,7 +93,11 @@ public class BankPayment extends Invoice
             "Jobseeker: " + getJobseeker().getName() + "\n" +
             "Payment  : " + getPaymentType().toString() + "\n" +
             "Status   : " + getInvoiceStatus() + "\n" + 
-            "Admin Fee: " + adminFee + "\n" +
-            "Total Fee: " + getTotalFee();
+            "Total Fee: " + getTotalFee() + 
+            (
+                (bonus != null && bonus.getActive() && totalFee > bonus.getMinTotalFee()) 
+                    ? ("\nReferral Code: " + bonus.getReferralCode()) 
+                    : ""
+            );
     }
 }

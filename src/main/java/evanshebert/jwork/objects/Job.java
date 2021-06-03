@@ -1,4 +1,6 @@
-package evanshebert.jwork;
+package evanshebert.jwork.objects;
+
+import evanshebert.jwork.enums.JobCategory;
 
 /**
  * Information about a job.

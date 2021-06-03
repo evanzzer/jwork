@@ -1,6 +1,10 @@
-package evanshebert.jwork;
+package evanshebert.jwork.database;
 
 import java.util.ArrayList;
+
+import evanshebert.jwork.exceptions.BonusNotFoundException;
+import evanshebert.jwork.exceptions.ReferralCodeAlreadyExistsException;
+import evanshebert.jwork.objects.Bonus;
 
 /**
  * A list of database about Bonus

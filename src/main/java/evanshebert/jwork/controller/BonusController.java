@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 
-import evanshebert.jwork.Bonus;
-import evanshebert.jwork.DatabaseBonus;
-import evanshebert.jwork.ReferralCodeAlreadyExistsException;
+import evanshebert.jwork.objects.Bonus;
+import evanshebert.jwork.database.DatabaseBonus;
+import evanshebert.jwork.exceptions.ReferralCodeAlreadyExistsException;
 
 @RequestMapping("/bonus")
 @RestController

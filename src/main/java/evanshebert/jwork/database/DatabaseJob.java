@@ -1,8 +1,12 @@
-package evanshebert.jwork;
+package evanshebert.jwork.database;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import evanshebert.jwork.enums.JobCategory;
+import evanshebert.jwork.exceptions.JobNotFoundException;
+import evanshebert.jwork.objects.Job;
 
 /**
  * A list of database about Jobs

@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 
-import evanshebert.jwork.DatabaseJob;
-import evanshebert.jwork.DatabaseRecruiter;
-import evanshebert.jwork.Job;
-import evanshebert.jwork.JobCategory;
-import evanshebert.jwork.JobNotFoundException;
-import evanshebert.jwork.RecruiterNotFoundException;
+import evanshebert.jwork.database.DatabaseJob;
+import evanshebert.jwork.database.DatabaseRecruiter;
+import evanshebert.jwork.objects.Job;
+import evanshebert.jwork.enums.JobCategory;
+import evanshebert.jwork.exceptions.JobNotFoundException;
+import evanshebert.jwork.exceptions.RecruiterNotFoundException;
 
 @RequestMapping("/job")
 @RestController

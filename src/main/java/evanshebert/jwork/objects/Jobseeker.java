@@ -1,4 +1,4 @@
-package evanshebert.jwork;
+package evanshebert.jwork.objects;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

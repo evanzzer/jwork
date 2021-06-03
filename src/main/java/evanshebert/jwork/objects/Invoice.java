@@ -1,8 +1,11 @@
-package evanshebert.jwork;
+package evanshebert.jwork.objects;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
+import evanshebert.jwork.enums.InvoiceStatus;
+import evanshebert.jwork.enums.PaymentType;
 
 /**
  * Details about invoices.
