@@ -13,6 +13,7 @@ public class ReferralCodeAlreadyExistsException extends Exception {
 
     /**
      * Default Constructor
+     *
      * @param bonus_input Bonus input
      */
     public ReferralCodeAlreadyExistsException(Bonus bonus_input) {
@@ -22,10 +23,10 @@ public class ReferralCodeAlreadyExistsException extends Exception {
 
     /**
      * Retrieve error message
+     *
      * @return error message
      */
-    public String getMessage()
-    {
+    public String getMessage() {
         return super.getMessage() + bonus_error.getReferralCode() + " already exists.";
     }
 }

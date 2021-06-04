@@ -10,6 +10,12 @@ import evanshebert.jwork.objects.Job;
 import evanshebert.jwork.objects.Location;
 import evanshebert.jwork.objects.Recruiter;
 
+/**
+ * A list of database related to Postgre about Job
+ *
+ * @author Evans Hebert
+ * @version 03 June 2021
+ */
 public class DatabaseJobPostgre {
     /**
      * Retrieve a list of job objects
@@ -140,6 +146,12 @@ public class DatabaseJobPostgre {
         } else throw new JobNotFoundException(id);
     }
 
+    /**
+     * Function to get a list of Job data
+     *
+     * @param query Where statement query to filter data
+     * @return a list of Job data
+     */
     private static ArrayList<Job> getData(String query) {
         ArrayList<Job> list = new ArrayList<>();
         try {

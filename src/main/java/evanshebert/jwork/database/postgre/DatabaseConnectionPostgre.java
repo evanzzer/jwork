@@ -4,8 +4,18 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * Connection Setting to PostgreSQL
+ *
+ * @author Evans Hebert
+ * @version 03 June 2021
+ */
 public class DatabaseConnectionPostgre {
 
+    /**
+     * Connect to a specified PostgreSQL server
+     * @return Connection to establish access to data
+     */
     public static Connection connection() {
         Connection c = null;
         String db_host = "localhost";

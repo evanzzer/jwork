@@ -21,6 +21,12 @@ import evanshebert.jwork.objects.Jobseeker;
 import evanshebert.jwork.objects.Location;
 import evanshebert.jwork.objects.Recruiter;
 
+/**
+ * A list of database related to Postgre about Invoice
+ *
+ * @author Evans Hebert
+ * @version 03 June 2021
+ */
 public class DatabaseInvoicePostgre {
     /**
      * Retrieve a list of invoice objects
@@ -271,6 +277,12 @@ public class DatabaseInvoicePostgre {
         } else throw new InvoiceNotFoundException(id);
     }
 
+    /**
+     * Function to get a list of Invoice data
+     *
+     * @param query Where statement query to filter data.
+     * @return A list of invoice data
+     */
     @SuppressWarnings("Duplicates")
     private static ArrayList<Invoice> getData(String query) {
         ArrayList<Invoice> list = new ArrayList<>();

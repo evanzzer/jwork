@@ -14,7 +14,7 @@ import evanshebert.jwork.objects.Invoice;
  * A list of database about Invoices
  *
  * @author Evans Hebert
- * @version 06 June 2021
+ * @version 04 June 2021
  */
 public class DatabaseInvoice {
     /**

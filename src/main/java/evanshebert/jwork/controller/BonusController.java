@@ -13,20 +13,33 @@ import evanshebert.jwork.objects.Bonus;
 import evanshebert.jwork.database.DatabaseBonus;
 import evanshebert.jwork.exceptions.ReferralCodeAlreadyExistsException;
 
+/**
+ * Bonus Controller for Bonus Related API
+ *
+ * @author Evans Hebert
+ * @version 04 June 2021
+ */
 @RequestMapping("/bonus")
 @RestController
-public class BonusController
-{
-
+public class BonusController {
+    /**
+     * Get All Bonus from Database
+     *
+     * @return List of Bonus
+     */
     @RequestMapping("")
-    public ArrayList<Bonus> getAllBonus()
-    {
+    public ArrayList<Bonus> getAllBonus() {
         return DatabaseBonus.getBonusDatabase();
     }
 
+    /**
+     * Get Bonus by using the referral code
+     *
+     * @param referralCode Bonus Referral Code
+     * @return List of Recruiter
+     */
     @RequestMapping("/{referralCode}")
-    public Bonus getBonusByReferralCode(@PathVariable String referralCode)
-    {
+    public Bonus getBonusByReferralCode(@PathVariable String referralCode) {
         try {
             return DatabaseBonus.getBonusByReferralCode(referralCode);
         } catch (BonusNotFoundException e) {
@@ -35,12 +48,20 @@ public class BonusController
         }
     }
 
+    /**
+     * Add a new Bonus
+     *
+     * @param referralCode Bonus COde
+     * @param extraFee     Bonus Extra Fee to be applied
+     * @param minTotalFee  Minimal total fee needed for the bonus to apply
+     * @param active       Bonus status
+     * @return A new created bonus object
+     */
     @RequestMapping(value = "", method = RequestMethod.POST)
     public Bonus addBonus(@RequestParam(value = "referralCode") String referralCode,
                           @RequestParam(value = "extraFee") int extraFee,
                           @RequestParam(value = "minTotalFee") int minTotalFee,
-                          @RequestParam(value = "active") boolean active)
-    {
+                          @RequestParam(value = "active") boolean active) {
         try {
             Bonus bonus = new Bonus(
                     DatabaseBonus.getLastId() + 1,

@@ -11,20 +11,20 @@ public class InvoiceNotFoundException extends Exception {
 
     /**
      * Default Constructor
+     *
      * @param invoice_input Bonus input
      */
-    public InvoiceNotFoundException(int invoice_input)
-    {
+    public InvoiceNotFoundException(int invoice_input) {
         super("Invoice ID: ");
         invoice_error = invoice_input;
     }
 
     /**
      * Retrieve error message
+     *
      * @return error message
      */
-    public String getMessage()
-    {
+    public String getMessage() {
         return super.getMessage() + invoice_error + " not found.";
     }
 }

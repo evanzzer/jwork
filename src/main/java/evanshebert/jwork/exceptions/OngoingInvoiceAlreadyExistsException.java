@@ -13,20 +13,20 @@ public class OngoingInvoiceAlreadyExistsException extends Exception {
 
     /**
      * Default Constructor
+     *
      * @param invoice_input Bonus input
      */
-    public OngoingInvoiceAlreadyExistsException(Invoice invoice_input)
-    {
+    public OngoingInvoiceAlreadyExistsException(Invoice invoice_input) {
         super("Ongoing invoice ");
         invoice_error = invoice_input;
     }
 
     /**
      * Retrieve error message
+     *
      * @return error message
      */
-    public String getMessage()
-    {
+    public String getMessage() {
         return super.getMessage() + invoice_error.getId() + " already exists.";
     }
 }

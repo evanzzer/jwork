@@ -21,6 +21,7 @@ public class JWork {
      */
     public static void main(String[] args) {
 
+        /* Defined in the SQL Table
         // Location
         Location jakarta = new Location("DKI Jakarta", "Jakarta", "Jakarta Utara");
 
@@ -42,6 +43,7 @@ public class JWork {
         } catch (RecruiterNotFoundException e) {
             System.out.println(e.getMessage());
         }
+        */
 
         SpringApplication.run(JWork.class, args);
     }

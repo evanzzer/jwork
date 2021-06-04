@@ -24,6 +24,8 @@ public enum JobCategory {
 
     /**
      * Convert an enum to string
+     *
+     * @return String description of an enum
      */
     public String toString() {
         return description;

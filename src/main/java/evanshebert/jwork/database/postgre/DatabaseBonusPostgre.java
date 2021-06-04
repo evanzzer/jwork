@@ -9,6 +9,12 @@ import evanshebert.jwork.exceptions.BonusNotFoundException;
 import evanshebert.jwork.exceptions.ReferralCodeAlreadyExistsException;
 import evanshebert.jwork.objects.Bonus;
 
+/**
+ * A list of database related to Postgre about Bonus
+ *
+ * @author Evans Hebert
+ * @version 03 June 2021
+ */
 public class DatabaseBonusPostgre {
     /**
      * Retrieve a list of bonus currently available

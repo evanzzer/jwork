@@ -13,6 +13,12 @@ import evanshebert.jwork.exceptions.EmailAlreadyExistsException;
 import evanshebert.jwork.exceptions.JobseekerNotFoundException;
 import evanshebert.jwork.objects.Jobseeker;
 
+/**
+ * A list of database related to Postgre about Jobseeker
+ *
+ * @author Evans Hebert
+ * @version 03 June 2021
+ */
 public class DatabaseJobseekerPostgre {
     /**
      * Retrieve a list of jobseeker

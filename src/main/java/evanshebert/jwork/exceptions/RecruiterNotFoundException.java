@@ -11,20 +11,20 @@ public class RecruiterNotFoundException extends Exception {
 
     /**
      * Default Constructor
+     *
      * @param recruiter_input Recruiter Error Input
      */
-    public RecruiterNotFoundException(int recruiter_input)
-    {
+    public RecruiterNotFoundException(int recruiter_input) {
         super("Recruiter ID: ");
         recruiter_error = recruiter_input;
     }
 
     /**
      * Retrieve error message
+     *
      * @return error message
      */
-    public String getMessage()
-    {
+    public String getMessage() {
         return super.getMessage() + recruiter_error + " not found.";
     }
 }

@@ -3,12 +3,17 @@ package evanshebert.jwork.database.postgre;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import evanshebert.jwork.exceptions.RecruiterNotFoundException;
 import evanshebert.jwork.objects.Location;
 import evanshebert.jwork.objects.Recruiter;
 
+/**
+ * A list of database related to Postgre about Recruiter
+ *
+ * @author Evans Hebert
+ * @version 03 June 2021
+ */
 public class DatabaseRecruiterPostgres {
     /**
      * Retrieve a list of recruiter objects

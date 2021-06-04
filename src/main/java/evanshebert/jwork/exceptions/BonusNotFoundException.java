@@ -11,30 +11,30 @@ public class BonusNotFoundException extends Exception {
 
     /**
      * Default Constructor
+     *
      * @param bonus_input Bonus Error Input
      */
-    public BonusNotFoundException(int bonus_input)
-    {
+    public BonusNotFoundException(int bonus_input) {
         super("Bonus ID: ");
         bonus_error = String.valueOf(bonus_input);
     }
 
     /**
      * Default Constructor
+     *
      * @param bonus_input Bonus Error Input
      */
-    public BonusNotFoundException(String bonus_input)
-    {
+    public BonusNotFoundException(String bonus_input) {
         super("Bonus ID: ");
         bonus_error = bonus_input;
     }
 
     /**
      * Retrieve error message
+     *
      * @return error message
      */
-    public String getMessage()
-    {
+    public String getMessage() {
         return super.getMessage() + bonus_error + " not found.";
     }
 }
