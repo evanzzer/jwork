@@ -1,5 +1,8 @@
 package evanshebert.jwork.enums;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Enumeration of Payment Type
  * 
@@ -10,6 +13,14 @@ public enum PaymentType
 {
     BankPayment("Bank Payment"), 
     EwalletPayment("E-Wallet Payment");
+
+    private static final Map<String, PaymentType> lookup = new HashMap<>();
+
+    static {
+        for (PaymentType p : PaymentType.values()) {
+            lookup.put(p.toString(), p);
+        }
+    }
     
     private final String description;
     
@@ -21,5 +32,9 @@ public enum PaymentType
     public String toString() 
     {
         return description;
+    }
+
+    public static PaymentType get(String p) {
+        return lookup.get(p);
     }
 }

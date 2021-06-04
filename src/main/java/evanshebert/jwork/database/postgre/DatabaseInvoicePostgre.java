@@ -70,11 +70,11 @@ public class DatabaseInvoicePostgre {
                             "SELECT i.id, i.job_id, j.name, j.recruiter_id, j.r_name, j.email, j.phoneNumber, j.province, j.city, j.description, j.fee, j.category, " +
                             "i.date, i.jobseeker_id, s.name, s.email, s.password, s.joinDate, i.invoiceStatus, i.paymentType, " +
                             "i.bonus_id, b.referralCode, b.extraFee, b.minTotalFee, b.active, i.adminFee " +
-                            "FROM invoice i INNER JOIN job j ON i.job_id = j.id INNER JOIN jobseeker s ON i.jobseeker_id = s.id " +
-                            "INNER JOIN bonus b ON i.bonus_id = b.id WHERE i.id = " + id + " ORDER BY i.id, i.job_id");
+                            "FROM invoice i LEFT JOIN job j ON i.job_id = j.id LEFT JOIN jobseeker s ON i.jobseeker_id = s.id " +
+                            "LEFT JOIN bonus b ON i.bonus_id = b.id WHERE i.id = " + id + " ORDER BY i.id, i.job_id");
 
             while (rs.next()) {
-                if (rs.getInt(1) == id) {
+                if (invoice != null && rs.getInt(1) == id) {
                     Job job = new Job(
                             rs.getInt(2),
                             rs.getString(3),
@@ -97,7 +97,7 @@ public class DatabaseInvoicePostgre {
                 }
 
                 Calendar calendar = Calendar.getInstance();
-                switch (PaymentType.valueOf(rs.getString(20))) {
+                switch (PaymentType.get(rs.getString(20))) {
                     case BankPayment:
                         calendar.setTime(rs.getDate(18));
                         invoice = new BankPayment(
@@ -127,15 +127,21 @@ public class DatabaseInvoicePostgre {
                                         rs.getString(16),
                                         rs.getString(17),
                                         calendar
-                                ),
-                                new Bonus(
-                                        rs.getInt(21),
-                                        rs.getString(22),
-                                        rs.getInt(23),
-                                        rs.getInt(24),
-                                        rs.getBoolean(25)
                                 )
                         );
+
+                        if (rs.getInt(21) != 0) {
+                            ((EwalletPayment) invoice).setBonus(
+                                    new Bonus(
+                                            rs.getInt(21),
+                                            rs.getString(22),
+                                            rs.getInt(23),
+                                            rs.getInt(24),
+                                            rs.getBoolean(25)
+                                    )
+                            );
+                        }
+
                         calendar.setTime(rs.getDate(13));
                         invoice.setDate(calendar);
                         invoice.setInvoiceStatus(InvoiceStatus.valueOf(rs.getString(19)));
@@ -167,7 +173,7 @@ public class DatabaseInvoicePostgre {
             if (invoice != null) {
                 invoice.setJobs(tempJob);
                 return invoice;
-            } else return null;
+            } else throw new InvoiceNotFoundException(id);
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
@@ -207,7 +213,7 @@ public class DatabaseInvoicePostgre {
                             invoice.getInvoiceStatus() + "', '" + invoice.getPaymentType() + "', " + ((BankPayment) invoice).getAdminFee() + ")"
                     );
                 } else if (invoice instanceof EwalletPayment) {
-                    String bonus = null;
+                    String bonus = "null";
                     if (((EwalletPayment) invoice).getBonus() != null) {
                         bonus = String.valueOf(((EwalletPayment) invoice).getBonus().getId());
                     }
@@ -282,8 +288,8 @@ public class DatabaseInvoicePostgre {
                             "SELECT i.id, i.job_id, j.name, j.recruiter_id, j.r_name, j.email, j.phoneNumber, j.province, j.city, j.description, j.fee, j.category, " +
                             "i.date, i.jobseeker_id, s.name, s.email, s.password, s.joinDate, i.invoiceStatus, i.paymentType, " +
                             "i.bonus_id, b.referralCode, b.extraFee, b.minTotalFee, b.active, i.adminFee " +
-                            "FROM invoice i INNER JOIN job j ON i.job_id = j.id INNER JOIN jobseeker s ON i.jobseeker_id = s.id " +
-                            "INNER JOIN bonus b ON i.bonus_id = b.id " + query + " ORDER BY i.id, i.job_id");
+                            "FROM invoice i LEFT JOIN job j ON i.job_id = j.id LEFT JOIN jobseeker s ON i.jobseeker_id = s.id " +
+                            "LEFT JOIN bonus b ON i.bonus_id = b.id " + query + " ORDER BY i.id, i.job_id");
 
             while (rs.next()) {
                 if (tempInvoice != null) {
@@ -317,7 +323,7 @@ public class DatabaseInvoicePostgre {
                 }
 
                 Calendar calendar = Calendar.getInstance();
-                switch (PaymentType.valueOf(rs.getString(20))) {
+                switch (PaymentType.get(rs.getString(20))) {
                     case BankPayment:
                         calendar.setTime(rs.getDate(18));
                         tempInvoice = new BankPayment(
@@ -347,15 +353,21 @@ public class DatabaseInvoicePostgre {
                                         rs.getString(16),
                                         rs.getString(17),
                                         calendar
-                                ),
-                                new Bonus(
-                                        rs.getInt(21),
-                                        rs.getString(22),
-                                        rs.getInt(23),
-                                        rs.getInt(24),
-                                        rs.getBoolean(25)
                                 )
                         );
+
+                        if (rs.getInt(21) != 0) {
+                            ((EwalletPayment) tempInvoice).setBonus(
+                                    new Bonus(
+                                            rs.getInt(21),
+                                            rs.getString(22),
+                                            rs.getInt(23),
+                                            rs.getInt(24),
+                                            rs.getBoolean(25)
+                                    )
+                            );
+                        }
+
                         calendar.setTime(rs.getDate(13));
                         tempInvoice.setDate(calendar);
                         tempInvoice.setInvoiceStatus(InvoiceStatus.valueOf(rs.getString(19)));

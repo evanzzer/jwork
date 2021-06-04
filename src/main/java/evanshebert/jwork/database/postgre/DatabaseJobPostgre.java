@@ -49,7 +49,9 @@ public class DatabaseJobPostgre {
         try {
             ResultSet rs = DatabaseConnectionPostgre.connection()
                     .createStatement()
-                    .executeQuery("WHERE j.id = " + id);
+                    .executeQuery("SELECT j.id, j.name, j.recruiter_id, r.name, r.email, " +
+                            "r.phoneNumber, r.province, r.city, r.description, j.fee, j.category " +
+                                    "FROM job j INNER JOIN recruiter r ON j.recruiter_id = r.id WHERE j.id = " + id);
 
             if (rs.next()) {
                 return new Job(
@@ -94,7 +96,7 @@ public class DatabaseJobPostgre {
      * @return a job array
      */
     public static ArrayList<Job> getJobByCategory(JobCategory category) {
-        return getData("WHERE j.recruiter_id = " + category.toString());
+        return getData("WHERE j.category = '" + category.toString() + "'");
     }
 
     /**
