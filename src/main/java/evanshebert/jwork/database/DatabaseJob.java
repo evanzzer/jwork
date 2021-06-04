@@ -1,11 +1,8 @@
 package evanshebert.jwork.database;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import evanshebert.jwork.database.postgre.DatabaseJobPostgre;
-import evanshebert.jwork.database.postgre.DatabaseJobseekerPostgre;
 import evanshebert.jwork.enums.JobCategory;
 import evanshebert.jwork.exceptions.JobNotFoundException;
 import evanshebert.jwork.objects.Job;
@@ -17,9 +14,6 @@ import evanshebert.jwork.objects.Job;
  * @version 03 June 2021
  */
 public class DatabaseJob {
-    private static final ArrayList<Job> JOB_DATABASE = new ArrayList<>();
-    private static int lastId = 0;
-
     /**
      * Retrieve a list of job objects
      *
@@ -36,7 +30,7 @@ public class DatabaseJob {
      * @return Last ID in Integer
      */
     public static int getLastId() {
-        return DatabaseJobseekerPostgre.getLastJobseekerId();
+        return DatabaseJobPostgre.getLastJobId();
     }
 
     /**

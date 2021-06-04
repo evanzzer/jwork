@@ -78,8 +78,6 @@ public class DatabaseRecruiterPostgres {
                     .executeQuery("SELECT * FROM recruiter WHERE id = " + id);
 
             if (rs.next()) {
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(rs.getDate(5));
                 return new Recruiter(
                         rs.getInt(1),
                         rs.getString(2),
