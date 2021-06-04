@@ -9,6 +9,7 @@ import evanshebert.jwork.exceptions.BonusNotFoundException;
 import evanshebert.jwork.exceptions.InvoiceNotFoundException;
 import evanshebert.jwork.exceptions.JobNotFoundException;
 import evanshebert.jwork.exceptions.JobseekerNotFoundException;
+import evanshebert.jwork.exceptions.OngoingInvoiceAlreadyExistsException;
 import evanshebert.jwork.objects.BankPayment;
 import evanshebert.jwork.objects.EwalletPayment;
 import evanshebert.jwork.objects.Invoice;
@@ -85,6 +86,9 @@ public class InvoiceController
             invoice.setTotalFee();
             boolean state = DatabaseInvoice.addInvoice(invoice);
             return state ? invoice : null;
+        } catch (OngoingInvoiceAlreadyExistsException e) {
+            e.getMessage();
+            return null;
         } catch (JobNotFoundException e) {
             e.getMessage();
             return null;
@@ -114,6 +118,9 @@ public class InvoiceController
             invoice.setTotalFee();
             boolean state = DatabaseInvoice.addInvoice(invoice);
             return state ? invoice : null;
+        } catch (OngoingInvoiceAlreadyExistsException e) {
+            e.getMessage();
+            return null;
         } catch (JobNotFoundException e) {
             e.getMessage();
             return null;

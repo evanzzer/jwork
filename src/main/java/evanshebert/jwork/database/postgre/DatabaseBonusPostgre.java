@@ -122,12 +122,9 @@ public class DatabaseBonusPostgre {
     public static boolean insertBonus(Bonus bonus) throws ReferralCodeAlreadyExistsException {
         try {
             Connection c = DatabaseConnectionPostgre.connection();
-            ResultSet rs = c.createStatement().executeQuery("SELECT * FROM bonus");
+            ResultSet rs = c.createStatement().executeQuery("SELECT * FROM bonus WHERE referralcode = '" + bonus.getReferralCode() + "'");
 
-            while (rs.next()) {
-                if (rs.getString("referralCode").equals(bonus.getReferralCode()))
-                    throw new ReferralCodeAlreadyExistsException(bonus);
-            }
+            if (rs.next()) throw new ReferralCodeAlreadyExistsException(bonus);
 
             c.createStatement().executeUpdate("INSERT INTO bonus VALUES(" +
                     bonus.getId() + ", '" + bonus.getReferralCode() + "', " +

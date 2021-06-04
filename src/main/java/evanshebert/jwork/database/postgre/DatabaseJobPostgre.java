@@ -3,10 +3,7 @@ package evanshebert.jwork.database.postgre;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
-import evanshebert.jwork.enums.InvoiceStatus;
 import evanshebert.jwork.enums.JobCategory;
 import evanshebert.jwork.exceptions.JobNotFoundException;
 import evanshebert.jwork.objects.Job;
@@ -21,9 +18,7 @@ public class DatabaseJobPostgre {
      */
     public static ArrayList<Job> getJobDatabase() {
         // Get listRecruiter
-        return getData("SELECT j.id, j.name, j.recruiter_id, r.name, r.email, r.phoneNumber, " +
-                "r.province, r.city, r.description, j.fee, j.category " +
-                "FROM job j INNER JOIN recruiter r ON j.recruiter_id = r.id");
+        return getData("");
     }
 
     /**
@@ -54,10 +49,7 @@ public class DatabaseJobPostgre {
         try {
             ResultSet rs = DatabaseConnectionPostgre.connection()
                     .createStatement()
-                    .executeQuery("SELECT j.id, j.name, j.recruiter_id, r.name, r.email, r.phoneNumber, " +
-                            "r.province, r.city, r.description, j.fee, j.category " +
-                            "FROM job j INNER JOIN recruiter r ON j.recruiter_id = r.id " +
-                            "WHERE j.id = " + id);
+                    .executeQuery("WHERE j.id = " + id);
 
             if (rs.next()) {
                 return new Job(
@@ -93,10 +85,7 @@ public class DatabaseJobPostgre {
      * @return a job array
      */
     public static ArrayList<Job> getJobByRecruiter(int recruiterId) {
-        return getData("SELECT j.id, j.name, j.recruiter_id, r.name, r.email, r.phoneNumber, " +
-                "r.province, r.city, r.description, j.fee, j.category " +
-                "FROM job j INNER JOIN recruiter r ON j.recruiter_id = r.id " +
-                "WHERE j.recruiter_id = " + recruiterId);
+        return getData("WHERE j.recruiter_id = " + recruiterId);
     }
 
     /**
@@ -105,10 +94,7 @@ public class DatabaseJobPostgre {
      * @return a job array
      */
     public static ArrayList<Job> getJobByCategory(JobCategory category) {
-        return getData("SELECT j.id, j.name, j.recruiter_id, r.name, r.email, r.phoneNumber, " +
-                "r.province, r.city, r.description, j.fee, j.category " +
-                "FROM job j INNER JOIN recruiter r ON j.recruiter_id = r.id " +
-                "WHERE j.recruiter_id = " + category.toString());
+        return getData("WHERE j.recruiter_id = " + category.toString());
     }
 
     /**
@@ -157,7 +143,9 @@ public class DatabaseJobPostgre {
         try {
             ResultSet rs = DatabaseConnectionPostgre.connection()
                     .createStatement()
-                    .executeQuery(query);
+                    .executeQuery("SELECT j.id, j.name, j.recruiter_id, r.name, r.email, " +
+                            "r.phoneNumber, r.province, r.city, r.description, j.fee, j.category " +
+                            "FROM job j INNER JOIN recruiter r ON j.recruiter_id = r.id " + query);
 
             while (rs.next()) {
                 Job job = new Job(

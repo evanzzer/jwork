@@ -138,12 +138,9 @@ public class DatabaseJobseekerPostgre {
     public static boolean insertJobseeker(Jobseeker jobseeker) throws EmailAlreadyExistsException {
         try {
             Connection c = DatabaseConnectionPostgre.connection();
-            ResultSet rs = c.createStatement().executeQuery("SELECT * FROM jobseeker");
+            ResultSet rs = c.createStatement().executeQuery("SELECT * FROM jobseeker WHERE email = '" + jobseeker.getEmail() + "'");
 
-            while (rs.next()) {
-                if (rs.getString("email").equals(jobseeker.getEmail()))
-                    throw new EmailAlreadyExistsException(jobseeker);
-            }
+            if (rs.next()) throw new EmailAlreadyExistsException(jobseeker);
 
             Date date = jobseeker.getJoinDate().getTime();
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
