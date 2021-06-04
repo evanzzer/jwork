@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import evanshebert.jwork.database.DatabaseJobseeker;
 import evanshebert.jwork.exceptions.EmailAlreadyExistsException;
-import evanshebert.jwork.objects.Jobseeker;
 import evanshebert.jwork.exceptions.JobseekerNotFoundException;
+import evanshebert.jwork.objects.Jobseeker;
 
 /**
  * Jobseeker Controller for Jobseeker Related API

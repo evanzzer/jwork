@@ -3,14 +3,6 @@ package evanshebert.jwork;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import evanshebert.jwork.database.DatabaseJob;
-import evanshebert.jwork.database.DatabaseRecruiter;
-import evanshebert.jwork.enums.JobCategory;
-import evanshebert.jwork.exceptions.RecruiterNotFoundException;
-import evanshebert.jwork.objects.Job;
-import evanshebert.jwork.objects.Location;
-import evanshebert.jwork.objects.Recruiter;
-
 /**
  * The main file of the package. Contains main().
  */

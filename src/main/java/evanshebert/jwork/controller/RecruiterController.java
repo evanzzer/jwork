@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 
 import evanshebert.jwork.database.DatabaseRecruiter;
+import evanshebert.jwork.exceptions.RecruiterNotFoundException;
 import evanshebert.jwork.objects.Location;
 import evanshebert.jwork.objects.Recruiter;
-import evanshebert.jwork.exceptions.RecruiterNotFoundException;
 
 /**
  * Recruiter Controller for Recruiter Related API

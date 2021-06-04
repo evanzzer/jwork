@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 
-import evanshebert.jwork.exceptions.BonusNotFoundException;
-import evanshebert.jwork.objects.Bonus;
 import evanshebert.jwork.database.DatabaseBonus;
+import evanshebert.jwork.exceptions.BonusNotFoundException;
 import evanshebert.jwork.exceptions.ReferralCodeAlreadyExistsException;
+import evanshebert.jwork.objects.Bonus;
 
 /**
  * Bonus Controller for Bonus Related API

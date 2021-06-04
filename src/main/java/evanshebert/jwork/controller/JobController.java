@@ -10,10 +10,10 @@ import java.util.ArrayList;
 
 import evanshebert.jwork.database.DatabaseJob;
 import evanshebert.jwork.database.DatabaseRecruiter;
-import evanshebert.jwork.objects.Job;
 import evanshebert.jwork.enums.JobCategory;
 import evanshebert.jwork.exceptions.JobNotFoundException;
 import evanshebert.jwork.exceptions.RecruiterNotFoundException;
+import evanshebert.jwork.objects.Job;
 
 /**
  * Job Controller for Job Related API
